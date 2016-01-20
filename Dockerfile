@@ -22,8 +22,7 @@ RUN apt-get update -qq && \
       nginx \
       libsqlite3-dev \
       libmysqlclient-dev \
-      software-properties-common \
-      mysql-server 
+      software-properties-common
 
 RUN gem install rails -v '4.2.0' --no-ri --no-rdoc
 
