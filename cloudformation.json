@@ -1,20 +1,20 @@
 {
-	"AWSTemplateFormatVersion": "2010-09-09",
-	"Description": "Creates a RubyOnRails application as an AutoScaled ECS cluster service.",
-	"Parameters": {
-		"AppName": {
-			"Description": "Name of the application",
-			"Default": "rails",
-			"Type": "String",
-			"MinLength": "1",
-			"MaxLength": "64",
-			"AllowedPattern": "[-_ a-zA-Z0-9]*",
-			"ConstraintDescription": "can contain only alphanumeric characters, spaces, dashes and underscores."
-		},
-		"ASGTopic": {
-			"Description": "Topic ARN for the autoscaling group notifications",
-			"Type": "String"
-		},
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Creates a RubyOnRails application as an AutoScaled ECS cluster service.",
+  "Parameters": {
+    "AppName": {
+      "Description": "Name of the application",
+      "Default": "rails",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "64",
+      "AllowedPattern": "[-_ a-zA-Z0-9]*",
+      "ConstraintDescription": "can contain only alphanumeric characters, spaces, dashes and underscores."
+    },
+    "ASGTopic": {
+      "Description": "Topic ARN for the autoscaling group notifications",
+      "Type": "String"
+    },
     "DBHost": {
         "Default": "localhost",
         "Description": "Database host endpoint",
@@ -54,25 +54,25 @@
         "AllowedPattern": "[a-zA-Z0-9]*",
         "ConstraintDescription": "must contain only alphanumeric characters."
     },
-		"KeyName": {
-			"Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances",
-			"Default": "default",
-			"Type": "String",
-			"MinLength": "1",
-			"MaxLength": "64",
-			"AllowedPattern": "[-_ a-zA-Z0-9]*",
-			"ConstraintDescription": "can contain only alphanumeric characters, spaces, dashes and underscores."
-		},
-		"DNSDomain": {
-			"Description": "DNS Name for the Application",
-			"Default": "awsbot.com",
-			"Type": "String"
-		},
-		"DockerImage": {
-			"Description": "Docker image for the Application",
-			"Default": "dcrbsltd/rails:latest",
-			"Type": "String"
-		},
+    "KeyName": {
+      "Description": "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+      "Default": "default",
+      "Type": "String",
+      "MinLength": "1",
+      "MaxLength": "64",
+      "AllowedPattern": "[-_ a-zA-Z0-9]*",
+      "ConstraintDescription": "can contain only alphanumeric characters, spaces, dashes and underscores."
+    },
+    "DNSDomain": {
+      "Description": "DNS Name for the Application",
+      "Default": "awsbot.com",
+      "Type": "String"
+    },
+    "DockerImage": {
+      "Description": "Docker image for the Application",
+      "Default": "dcrbsltd/rails:latest",
+      "Type": "String"
+    },
     "RailsEnv": {
       "Default": "production",
       "Description": "The Rails environment variable.",
@@ -91,205 +91,205 @@
         "Type": "String",
         "NoEcho": "true"
     },
-		"SSHLocation": {
+    "SSHLocation": {
       "Default": "0.0.0.0/0",
-			"Description": " The IP address range that can be used to SSH to the EC2 instances",
-			"Type": "String",
-			"MinLength": "9",
-			"MaxLength": "18",
-			"AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
-			"ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
-		},
+      "Description": " The IP address range that can be used to SSH to the EC2 instances",
+      "Type": "String",
+      "MinLength": "9",
+      "MaxLength": "18",
+      "AllowedPattern": "(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})\\.(\\d{1,3})/(\\d{1,2})",
+      "ConstraintDescription": "must be a valid IP CIDR range of the form x.x.x.x/x."
+    },
     "SslCertificateArn": {
       "Type": "String",
       "Description": "The arn for the load-balancer SSL certificate."
     }
-	},
-	"Conditions": {
-		"Is-EC2-VPC": {
-			"Fn::Or": [{
-				"Fn::Equals": [{
-						"Ref": "AWS::Region"
-					},
-					"eu-central-1"
-				]
-			}, {
-				"Fn::Equals": [{
-						"Ref": "AWS::Region"
-					},
-					"cn-north-1"
-				]
-			}]
-		},
-		"Is-EC2-Classic": {
-			"Fn::Not": [{
-				"Condition": "Is-EC2-VPC"
-			}]
-		}
-	},
-	"Mappings": {
-		"AWSRegion2AMI": {
-			"us-east-1": {
-				"ecs": "ami-8da458e6"
-			},
-			"us-west-2": {
-				"ecs": "ami-db0306eb"
-			},
-			"eu-west-1": {
-				"ecs": "ami-7948320e"
-			},
-			"ap-northeast-1": {
-				"ecs": "ami-fa12b7fa"
-			},
-			"ap-southeast-2": {
-				"ecs": "ami-014f353b"
-			}
-		}
-	},
-	"Resources": {
-		"EC2InstanceRole": {
-			"Type": "AWS::IAM::Role",
-			"Properties": {
-				"AssumeRolePolicyDocument": {
-					"Version": "2012-10-17",
-					"Statement": [{
-						"Effect": "Allow",
-						"Principal": {
-							"Service": [
-								"ec2.amazonaws.com",
-								"ecs.amazonaws.com"
-							]
-						},
-						"Action": [
-							"sts:AssumeRole"
-						]
-					}]
-				},
-				"Path": "/",
-				"Policies": [{
-					"PolicyName": "instance-role-policy",
-					"PolicyDocument": {
-						"Version": "2012-10-17",
-						"Statement": [{
-							"Effect": "Allow",
-							"Action": [
-								"elasticloadbalancing:Describe*",
-								"elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-								"elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-								"ec2:Describe*",
-								"ec2:AuthorizeSecurityGroupIngress",
-								"ecs:CreateCluster",
-								"ecs:DeregisterContainerInstance",
-								"ecs:DiscoverPollEndpoint",
-								"ecs:Poll",
-								"ecs:RegisterContainerInstance",
-								"ecs:Submit*"
-							],
-							"Resource": [
-								"*"
-							]
-						}]
-					}
-				}]
-			}
-		},
-		"IamPolicy": {
-			"Type": "AWS::IAM::Policy",
-			"DependsOn": "EC2InstanceRole",
-			"Properties": {
-				"PolicyName": "ecs-iam-policy",
-				"PolicyDocument": {
-					"Statement": [{
-						"Effect": "Allow",
-						"Action": [
-							"ecs:CreateCluster",
-							"ecs:DeregisterContainerInstance",
-							"ecs:DiscoverPollEndpoint",
-							"ecs:Poll",
-							"ecs:RegisterContainerInstance",
-							"ecs:Submit*"
-						],
-						"Resource": "*"
-					}]
-				},
-				"Roles": [{
-					"Ref": "EC2InstanceRole"
-				}]
-			}
-		},
-		"IamInstanceProfile": {
-			"Type": "AWS::IAM::InstanceProfile",
-			"DependsOn": "EC2InstanceRole",
-			"Properties": {
-				"Roles": [{
-					"Ref": "EC2InstanceRole"
-				}]
-			}
-		},
-		"LoadBalancerSecurityGroup": {
-			"Type": "AWS::EC2::SecurityGroup",
-			"Properties": {
-				"GroupDescription": "Enable HTTP access on port 80.",
-				"SecurityGroupIngress": [{
-					"IpProtocol": "tcp",
-					"FromPort": "80",
-					"ToPort": "80",
-					"CidrIp": "0.0.0.0/0"
-				}]
-			}
-		},
-		"AutoScalingSecurityGroup": {
-			"Type": "AWS::EC2::SecurityGroup",
-			"Properties": {
-				"GroupDescription": "Enable SSH access",
-				"SecurityGroupIngress": [{
-					"IpProtocol": "tcp",
-					"FromPort": "3000",
-					"ToPort": "3000",
-					"SourceSecurityGroupOwnerId": {
-						"Fn::GetAtt": [
-							"ElasticLoadBalancer",
-							"SourceSecurityGroup.OwnerAlias"
-						]
-					},
-					"SourceSecurityGroupName": {
-						"Fn::GetAtt": [
-							"ElasticLoadBalancer",
-							"SourceSecurityGroup.GroupName"
-						]
-					}
-				}, {
-					"IpProtocol": "tcp",
-					"FromPort": "22",
-					"ToPort": "22",
-					"CidrIp": {
-						"Ref": "SSHLocation"
-					}
-				}, {
-					"IpProtocol": "tcp",
-					"FromPort": "3000",
-					"ToPort": "3000",
-					"CidrIp": {
-						"Ref": "SSHLocation"
-					}
-				}]
-			}
-		},
-		"AutoScalingGroup": {
-			"Type": "AWS::AutoScaling::AutoScalingGroup",
-			"Properties": {
-				"AvailabilityZones": {
-					"Fn::GetAZs": ""
-				},
-				"LaunchConfigurationName": {
-					"Ref": "AutoScalingLaunchConfig"
-				},
-				"LoadBalancerNames": [{
-					"Ref": "ElasticLoadBalancer"
-				}],
-				"MinSize": "1",
-				"MaxSize": "3",
-				"DesiredCapacity": "1",
+  },
+  "Conditions": {
+    "Is-EC2-VPC": {
+      "Fn::Or": [{
+        "Fn::Equals": [{
+            "Ref": "AWS::Region"
+          },
+          "eu-central-1"
+        ]
+      }, {
+        "Fn::Equals": [{
+            "Ref": "AWS::Region"
+          },
+          "cn-north-1"
+        ]
+      }]
+    },
+    "Is-EC2-Classic": {
+      "Fn::Not": [{
+        "Condition": "Is-EC2-VPC"
+      }]
+    }
+  },
+  "Mappings": {
+    "AWSRegion2AMI": {
+      "us-east-1": {
+        "ecs": "ami-8da458e6"
+      },
+      "us-west-2": {
+        "ecs": "ami-db0306eb"
+      },
+      "eu-west-1": {
+        "ecs": "ami-7948320e"
+      },
+      "ap-northeast-1": {
+        "ecs": "ami-fa12b7fa"
+      },
+      "ap-southeast-2": {
+        "ecs": "ami-014f353b"
+      }
+    }
+  },
+  "Resources": {
+    "EC2InstanceRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [{
+            "Effect": "Allow",
+            "Principal": {
+              "Service": [
+                "ec2.amazonaws.com",
+                "ecs.amazonaws.com"
+              ]
+            },
+            "Action": [
+              "sts:AssumeRole"
+            ]
+          }]
+        },
+        "Path": "/",
+        "Policies": [{
+          "PolicyName": "instance-role-policy",
+          "PolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [{
+              "Effect": "Allow",
+              "Action": [
+                "elasticloadbalancing:Describe*",
+                "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+                "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+                "ec2:Describe*",
+                "ec2:AuthorizeSecurityGroupIngress",
+                "ecs:CreateCluster",
+                "ecs:DeregisterContainerInstance",
+                "ecs:DiscoverPollEndpoint",
+                "ecs:Poll",
+                "ecs:RegisterContainerInstance",
+                "ecs:Submit*"
+              ],
+              "Resource": [
+                "*"
+              ]
+            }]
+          }
+        }]
+      }
+    },
+    "IamPolicy": {
+      "Type": "AWS::IAM::Policy",
+      "DependsOn": "EC2InstanceRole",
+      "Properties": {
+        "PolicyName": "ecs-iam-policy",
+        "PolicyDocument": {
+          "Statement": [{
+            "Effect": "Allow",
+            "Action": [
+              "ecs:CreateCluster",
+              "ecs:DeregisterContainerInstance",
+              "ecs:DiscoverPollEndpoint",
+              "ecs:Poll",
+              "ecs:RegisterContainerInstance",
+              "ecs:Submit*"
+            ],
+            "Resource": "*"
+          }]
+        },
+        "Roles": [{
+          "Ref": "EC2InstanceRole"
+        }]
+      }
+    },
+    "IamInstanceProfile": {
+      "Type": "AWS::IAM::InstanceProfile",
+      "DependsOn": "EC2InstanceRole",
+      "Properties": {
+        "Roles": [{
+          "Ref": "EC2InstanceRole"
+        }]
+      }
+    },
+    "LoadBalancerSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Enable HTTP access on port 80.",
+        "SecurityGroupIngress": [{
+          "IpProtocol": "tcp",
+          "FromPort": "80",
+          "ToPort": "80",
+          "CidrIp": "0.0.0.0/0"
+        }]
+      }
+    },
+    "AutoScalingSecurityGroup": {
+      "Type": "AWS::EC2::SecurityGroup",
+      "Properties": {
+        "GroupDescription": "Enable SSH access",
+        "SecurityGroupIngress": [{
+          "IpProtocol": "tcp",
+          "FromPort": "3000",
+          "ToPort": "3000",
+          "SourceSecurityGroupOwnerId": {
+            "Fn::GetAtt": [
+              "ElasticLoadBalancer",
+              "SourceSecurityGroup.OwnerAlias"
+            ]
+          },
+          "SourceSecurityGroupName": {
+            "Fn::GetAtt": [
+              "ElasticLoadBalancer",
+              "SourceSecurityGroup.GroupName"
+            ]
+          }
+        }, {
+          "IpProtocol": "tcp",
+          "FromPort": "22",
+          "ToPort": "22",
+          "CidrIp": {
+            "Ref": "SSHLocation"
+          }
+        }, {
+          "IpProtocol": "tcp",
+          "FromPort": "3000",
+          "ToPort": "3000",
+          "CidrIp": {
+            "Ref": "SSHLocation"
+          }
+        }]
+      }
+    },
+    "AutoScalingGroup": {
+      "Type": "AWS::AutoScaling::AutoScalingGroup",
+      "Properties": {
+        "AvailabilityZones": {
+          "Fn::GetAZs": ""
+        },
+        "LaunchConfigurationName": {
+          "Ref": "AutoScalingLaunchConfig"
+        },
+        "LoadBalancerNames": [{
+          "Ref": "ElasticLoadBalancer"
+        }],
+        "MinSize": "1",
+        "MaxSize": "3",
+        "DesiredCapacity": "1",
         "NotificationConfigurations" : [
           {
             "TopicARN" : { "Ref" : "ASGTopic" },
@@ -301,97 +301,97 @@
             ]
           }
         ],
-				"Tags": [{
-					"Key": "Name",
-					"Value": {
-						"Fn::Join": [
-							".", 
+        "Tags": [{
+          "Key": "Name",
+          "Value": {
+            "Fn::Join": [
+              ".", 
               [
                 "app",
                {
-								"Ref": "DNSDomain"
-							}]
-						]
-					},
-					"PropagateAtLaunch": "true"
-				}]
-			}
-		},
-		"AutoScalingLaunchConfig": {
-			"DependsOn": "ECSCluster",
-			"Type": "AWS::AutoScaling::LaunchConfiguration",
-			"Metadata": {
-				"AWS::CloudFormation::Init": {
-					"configSets": {
-						"full_install": [
-							"install_cfn",
-							"configure_app"
-						]
-					},
-					"install_cfn": {
-						"files": {
-							"/etc/cfn/cfn-hup.conf": {
-								"content": {
-									"Fn::Join": [
-										"", [
-											"[main]\n",
-											"stack=", {
-												"Ref": "AWS::StackId"
-											},
-											"\n",
-											"region=", {
-												"Ref": "AWS::Region"
-											},
-											"\n"
-										]
-									]
-								},
-								"mode": "000400",
-								"owner": "root",
-								"group": "root"
-							},
-							"/etc/cfn/hooks.d/cfn-auto-reloader.conf": {
-								"content": {
-									"Fn::Join": [
-										"", [
-											"[cfn-auto-reloader-hook]\n",
-											"triggers=post.update\n",
-											"path=Resources.LaunchConfig.Metadata.AWS::CloudFormation::Init\n",
-											"action=/opt/aws/apitools/cfn-init/bin/cfn-init -v ",
-											"         --stack ", {
-												"Ref": "AWS::StackName"
-											},
-											"         --resource AutoScalingLaunchConfig ",
-											"         --configsets configure_app ",
-											"         --region ", {
-												"Ref": "AWS::Region"
-											},
-											"\n",
-											"runas=root\n"
-										]
-									]
-								}
-							}
-						},
-						"services": {
-							"sysvinit": {
-								"cfn-hup": {
-									"enabled": "true",
-									"ensureRunning": "true",
-									"files": [
-										"/etc/cfn/cfn-hup.conf",
-										"/etc/cfn/hooks.d/cfn-auto-reloader.conf"
-									]
-								}
-							}
-						}
-					},
-					"configure_app": {
-						"files": {
-							"/etc/rails/database.yml": {
-								"content": {
-									"Fn::Join": [
-										"", [
+                "Ref": "DNSDomain"
+              }]
+            ]
+          },
+          "PropagateAtLaunch": "true"
+        }]
+      }
+    },
+    "AutoScalingLaunchConfig": {
+      "DependsOn": "ECSCluster",
+      "Type": "AWS::AutoScaling::LaunchConfiguration",
+      "Metadata": {
+        "AWS::CloudFormation::Init": {
+          "configSets": {
+            "full_install": [
+              "install_cfn",
+              "configure_app"
+            ]
+          },
+          "install_cfn": {
+            "files": {
+              "/etc/cfn/cfn-hup.conf": {
+                "content": {
+                  "Fn::Join": [
+                    "", [
+                      "[main]\n",
+                      "stack=", {
+                        "Ref": "AWS::StackId"
+                      },
+                      "\n",
+                      "region=", {
+                        "Ref": "AWS::Region"
+                      },
+                      "\n"
+                    ]
+                  ]
+                },
+                "mode": "000400",
+                "owner": "root",
+                "group": "root"
+              },
+              "/etc/cfn/hooks.d/cfn-auto-reloader.conf": {
+                "content": {
+                  "Fn::Join": [
+                    "", [
+                      "[cfn-auto-reloader-hook]\n",
+                      "triggers=post.update\n",
+                      "path=Resources.LaunchConfig.Metadata.AWS::CloudFormation::Init\n",
+                      "action=/opt/aws/apitools/cfn-init/bin/cfn-init -v ",
+                      "         --stack ", {
+                        "Ref": "AWS::StackName"
+                      },
+                      "         --resource AutoScalingLaunchConfig ",
+                      "         --configsets configure_app ",
+                      "         --region ", {
+                        "Ref": "AWS::Region"
+                      },
+                      "\n",
+                      "runas=root\n"
+                    ]
+                  ]
+                }
+              }
+            },
+            "services": {
+              "sysvinit": {
+                "cfn-hup": {
+                  "enabled": "true",
+                  "ensureRunning": "true",
+                  "files": [
+                    "/etc/cfn/cfn-hup.conf",
+                    "/etc/cfn/hooks.d/cfn-auto-reloader.conf"
+                  ]
+                }
+              }
+            }
+          },
+          "configure_app": {
+            "files": {
+              "/etc/rails/database.yml": {
+                "content": {
+                  "Fn::Join": [
+                    "", [
                       "production: &default\n",
                       "  adapter: sqlite3\n",
                       "  database: db/rails.sqlite3\n",
@@ -401,31 +401,31 @@
                       "  <<: *default\n",
                       "development:\n",
                       "  <<: *default\n",
-											"\n"
-										]
-									]
-								},
-								"mode": "000644",
-								"owner": "ec2-user",
-								"group": "ec2-user"
-							},
-							"/etc/rails/config.yml": {
-								"content": {
-									"Fn::Join": [
-										"", [
-											":settings: &settings\n",
+                      "\n"
+                    ]
+                  ]
+                },
+                "mode": "000644",
+                "owner": "ec2-user",
+                "group": "ec2-user"
+              },
+              "/etc/rails/config.yml": {
+                "content": {
+                  "Fn::Join": [
+                    "", [
+                      ":settings: &settings\n",
                       "  :host: ",
                       {
-            						"Fn::Join": [
-            							"", [
+                        "Fn::Join": [
+                          "", [
                             "app",
-            								".",
+                            ".",
                             {
-            									"Ref": "DNSDomain"
-            								}
-            							]
-            						]
-            					},
+                              "Ref": "DNSDomain"
+                            }
+                          ]
+                        ]
+                      },
                       "\n",
                       "  :s3_bucket: ",
                       {
@@ -437,57 +437,57 @@
                         "Ref": "AppName"
                       },
                       "\n",
-											"  :smtp_email: ", {
-												"Ref": "SMTPEMailAddress"
-											},
-											"\n",
-											"  :smtp_password:  ", {
-												"Ref": "SMTPPassword"
-											},
-											"\n",
-											"development: *settings\n",
-											"test: *settings\n",
-											"production: *settings\n",
-											"\n"
-										]
-									]
-								},
-								"mode": "000644",
-								"owner": "ec2-user",
-								"group": "ec2-user"
-							}
-						}
-					}
-				}
-			},
-			"Properties": {
-				"ImageId": {
-					"Fn::FindInMap": [
-						"AWSRegion2AMI", {
-							"Ref": "AWS::Region"
-						},
-						"ecs"
-					]
-				},
-				"InstanceType": "t2.micro",
-				"IamInstanceProfile": {
-					"Ref": "IamInstanceProfile"
-				},
-				"SecurityGroups": [{
-					"Ref": "AutoScalingSecurityGroup"
-				}],
-				"KeyName": {
-					"Ref": "KeyName"
-				},
-				"UserData": {
-					"Fn::Base64": {
-						"Fn::Join": [
-							"", [
-								"#!/bin/bash\n",
-								"echo ECS_CLUSTER=", {
-									"Ref": "ECSCluster"
-								},
-								" >> /etc/ecs/ecs.config\n",
+                      "  :smtp_email: ", {
+                        "Ref": "SMTPEMailAddress"
+                      },
+                      "\n",
+                      "  :smtp_password:  ", {
+                        "Ref": "SMTPPassword"
+                      },
+                      "\n",
+                      "development: *settings\n",
+                      "test: *settings\n",
+                      "production: *settings\n",
+                      "\n"
+                    ]
+                  ]
+                },
+                "mode": "000644",
+                "owner": "ec2-user",
+                "group": "ec2-user"
+              }
+            }
+          }
+        }
+      },
+      "Properties": {
+        "ImageId": {
+          "Fn::FindInMap": [
+            "AWSRegion2AMI", {
+              "Ref": "AWS::Region"
+            },
+            "ecs"
+          ]
+        },
+        "InstanceType": "t2.micro",
+        "IamInstanceProfile": {
+          "Ref": "IamInstanceProfile"
+        },
+        "SecurityGroups": [{
+          "Ref": "AutoScalingSecurityGroup"
+        }],
+        "KeyName": {
+          "Ref": "KeyName"
+        },
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "", [
+                "#!/bin/bash\n",
+                "echo ECS_CLUSTER=", {
+                  "Ref": "ECSCluster"
+                },
+                " >> /etc/ecs/ecs.config\n",
                 "yum install -y vim git aws-cli aws-cfn-bootstrap\n",
                 "/opt/aws/apitools/cfn-init/bin/cfn-init -v ",
                 "         --stack ",
@@ -512,30 +512,30 @@
                     "Ref": "AWS::Region"
                 },
                 "\n"
-							]
-						]
-					}
-				}
-			}
-		},
-		"ElasticLoadBalancer": {
-			"Type": "AWS::ElasticLoadBalancing::LoadBalancer",
-			"Properties": {
-				"LoadBalancerName": {
-					"Ref": "AppName"
-				},
-				"AvailabilityZones": {
-					"Fn::GetAZs": ""
-				},
-				"HealthCheck": {
-					"HealthyThreshold": "2",
-					"Interval": "6",
-					"Target": "HTTP:3000/",
-					"Timeout": "3",
-					"UnhealthyThreshold": "3"
-				},
-				"CrossZone": "true",
-				"Listeners": [
+              ]
+            ]
+          }
+        }
+      }
+    },
+    "ElasticLoadBalancer": {
+      "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties": {
+        "LoadBalancerName": {
+          "Ref": "AppName"
+        },
+        "AvailabilityZones": {
+          "Fn::GetAZs": ""
+        },
+        "HealthCheck": {
+          "HealthyThreshold": "2",
+          "Interval": "6",
+          "Target": "HTTP:3000/",
+          "Timeout": "3",
+          "UnhealthyThreshold": "3"
+        },
+        "CrossZone": "true",
+        "Listeners": [
           {
             "InstancePort": "3000",
             "SSLCertificateId": {
@@ -546,28 +546,28 @@
             "InstanceProtocol": "HTTP"
           },
           {
-					  "InstancePort": "3000",
-					  "InstanceProtocol": "HTTP",
-					  "LoadBalancerPort": "80",
-					  "Protocol": "HTTP"
-				  }
+            "InstancePort": "3000",
+            "InstanceProtocol": "HTTP",
+            "LoadBalancerPort": "80",
+            "Protocol": "HTTP"
+          }
         ]
-			}
-		},
-		"ECSCluster": {
-			"Type": "AWS::ECS::Cluster"
-		},
-		"ECSTaskDefinition": {
-			"Type": "AWS::ECS::TaskDefinition",
-			"Properties": {
-				"ContainerDefinitions": [{
-					"Name": "rails",
-					"Image": {
-						"Ref": "DockerImage"
-					},
-					"Essential": "true",
-					"Cpu": "10",
-					"Memory": "384",
+      }
+    },
+    "ECSCluster": {
+      "Type": "AWS::ECS::Cluster"
+    },
+    "ECSTaskDefinition": {
+      "Type": "AWS::ECS::TaskDefinition",
+      "Properties": {
+        "ContainerDefinitions": [{
+          "Name": "rails",
+          "Image": {
+            "Ref": "DockerImage"
+          },
+          "Essential": "true",
+          "Cpu": "10",
+          "Memory": "384",
           "Environment": [
               {
                   "Name": "RAILS_ENV",
@@ -578,128 +578,128 @@
               {
                 "Name": "HOST",
                 "Value": {
-      						"Fn::Join": [
-      							"", [
+                  "Fn::Join": [
+                    "", [
                       "app",
-      								".",
+                      ".",
                       {
-      									"Ref": "DNSDomain"
-      								},
-      								"."
-      							]
-      						]
-      					}
+                        "Ref": "DNSDomain"
+                      },
+                      "."
+                    ]
+                  ]
+                }
               }
           ],
-					"PortMappings": [
+          "PortMappings": [
             {
-  						"ContainerPort": "3000",
-  						"HostPort": "3000"
-					  }
+              "ContainerPort": "3000",
+              "HostPort": "3000"
+            }
           ],
-					"MountPoints": [
+          "MountPoints": [
             {
-  						"SourceVolume": "database-yml",
-  						"ContainerPath": "/rails/config/database.yml"
-  					}, 
+              "SourceVolume": "database-yml",
+              "ContainerPath": "/rails/config/database.yml"
+            }, 
             {
-  						"SourceVolume": "config-yml",
-  						"ContainerPath": "/rails/config/config.yml"
-  					}
+              "SourceVolume": "config-yml",
+              "ContainerPath": "/rails/config/config.yml"
+            }
           ]
-				}
+        }
       ],
-				"Volumes": [{
-					"Name": "database-yml",
-					"Host": {
-						"SourcePath": "/etc/rails/database.yml"
-					}
-				}, {
-					"Name": "config-yml",
-					"Host": {
-						"SourcePath": "/etc/rails/config.yml"
-					}
-				}]
-			}
-		},
-		"ECSServiceDefinition": {
-			"DependsOn": "AutoScalingGroup",
-			"Type": "AWS::ECS::Service",
-			"Properties": {
-				"Cluster": {
-					"Ref": "ECSCluster"
-				},
-				"DesiredCount": "1",
-				"LoadBalancers": [{
-					"ContainerName": "rails",
-					"ContainerPort": "3000",
-					"LoadBalancerName": {
-						"Ref": "ElasticLoadBalancer"
-					}
-				}],
-				"Role": {
-					"Ref": "EC2InstanceRole"
-				},
-				"TaskDefinition": {
-					"Ref": "ECSTaskDefinition"
-				}
-			}
-		},
-		"RecordSetGroup": {
-			"Type": "AWS::Route53::RecordSetGroup",
-			"Properties": {
-				"HostedZoneName": {
-					"Fn::Join": [
-						"", [{
-								"Ref": "DNSDomain"
-							},
-							"."
-						]
-					]
-				},
-				"Comment": "The Ruby On Rails HTTP application",
-				"RecordSets": [{
-					"Name": {
-						"Fn::Join": [
-							"", [
+        "Volumes": [{
+          "Name": "database-yml",
+          "Host": {
+            "SourcePath": "/etc/rails/database.yml"
+          }
+        }, {
+          "Name": "config-yml",
+          "Host": {
+            "SourcePath": "/etc/rails/config.yml"
+          }
+        }]
+      }
+    },
+    "ECSServiceDefinition": {
+      "DependsOn": "AutoScalingGroup",
+      "Type": "AWS::ECS::Service",
+      "Properties": {
+        "Cluster": {
+          "Ref": "ECSCluster"
+        },
+        "DesiredCount": "1",
+        "LoadBalancers": [{
+          "ContainerName": "rails",
+          "ContainerPort": "3000",
+          "LoadBalancerName": {
+            "Ref": "ElasticLoadBalancer"
+          }
+        }],
+        "Role": {
+          "Ref": "EC2InstanceRole"
+        },
+        "TaskDefinition": {
+          "Ref": "ECSTaskDefinition"
+        }
+      }
+    },
+    "RecordSetGroup": {
+      "Type": "AWS::Route53::RecordSetGroup",
+      "Properties": {
+        "HostedZoneName": {
+          "Fn::Join": [
+            "", [{
+                "Ref": "DNSDomain"
+              },
+              "."
+            ]
+          ]
+        },
+        "Comment": "The Ruby On Rails HTTP application",
+        "RecordSets": [{
+          "Name": {
+            "Fn::Join": [
+              "", [
                 "app",
-								".",
+                ".",
                 {
-									"Ref": "DNSDomain"
-								},
-								"."
-							]
-						]
-					},
-					"Type": "A",
-					"AliasTarget": {
-						"DNSName": {
-							"Fn::GetAtt": [
-								"ElasticLoadBalancer",
-								"DNSName"
-							]
-						},
-						"EvaluateTargetHealth": "true",
-						"HostedZoneId": {
-							"Fn::GetAtt": [
-								"ElasticLoadBalancer",
-								"CanonicalHostedZoneNameID"
-							]
-						}
-					}
-				}]
-			}
-		}
-	},
-	"Outputs": {
-		"LoadbalancerEndpoint": {
-			"Description": "The DNSName of the load balancer",
-			"Value": {
-				"Fn::GetAtt": [
-					"ElasticLoadBalancer",
-					"DNSName"
-				]
-			}
-		}
-	}
+                  "Ref": "DNSDomain"
+                },
+                "."
+              ]
+            ]
+          },
+          "Type": "A",
+          "AliasTarget": {
+            "DNSName": {
+              "Fn::GetAtt": [
+                "ElasticLoadBalancer",
+                "DNSName"
+              ]
+            },
+            "EvaluateTargetHealth": "true",
+            "HostedZoneId": {
+              "Fn::GetAtt": [
+                "ElasticLoadBalancer",
+                "CanonicalHostedZoneNameID"
+              ]
+            }
+          }
+        }]
+      }
+    }
+  },
+  "Outputs": {
+    "LoadbalancerEndpoint": {
+      "Description": "The DNSName of the load balancer",
+      "Value": {
+        "Fn::GetAtt": [
+          "ElasticLoadBalancer",
+          "DNSName"
+        ]
+      }
+    }
+  }
 }
