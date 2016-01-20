@@ -36,3 +36,5 @@ bower.json
 
 # For nohup
 *.out
+
+.DS_Store
