@@ -1,0 +1,3 @@
+#!/bin/bash
+#docker run -d -p 3000:3000 -e RAILS_ENV=production -v `pwd`/screendrops:/screendrops dcrbsltd/screendrops:$VERSION
+docker run -d -p 3000:3000 -e RAILS_ENV=production dcrbsltd/screendrops:$VERSION

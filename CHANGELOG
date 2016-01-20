@@ -1,0 +1,35 @@
+ - Updated with new name
+ - Tweaked tweakables
+Mon  7 Dec 2015 10:28:35 GMT - Release Candidate 1
+Mon  7 Dec 2015 10:30:02 GMT - Release Candidate 1
+Mon  7 Dec 2015 10:35:09 GMT - Travis yaml changed
+Mon  7 Dec 2015 10:38:51 GMT - Updated for python-ppip
+Mon  7 Dec 2015 10:41:23 GMT - Removed comments for debugging
+Mon  7 Dec 2015 10:44:19 GMT - Updated with CF_BUCKET var
+Mon  7 Dec 2015 10:47:37 GMT - uodates
+Mon  7 Dec 2015 10:49:02 GMT - Updates
+Mon  7 Dec 2015 10:49:58 GMT - Updates
+Sun  3 Jan 19:57:54 UTC 2016 - Created rails app
+Sun  3 Jan 20:02:29 UTC 2016 - Merged conflicts resolved
+Sun  3 Jan 20:34:14 UTC 2016 - Dockerizing
+Mon  4 Jan 2016 01:25:51 IST - Created snapshot scaffold
+Mon  4 Jan 03:22:27 UTC 2016 - Snapshot scaffold, and cloudformation updated.
+Mon  4 Jan 05:20:41 UTC 2016 - snapshot now uses paperclip
+Mon  4 Jan 10:22:57 UTC 2016 - Version 1
+Tue 12 Jan 2016 20:39:06 IST - Updated with app config via cfn-init
+Wed  6 Jan 11:21:55 UTC 2016 - Updates
+Tue 12 Jan 13:21:19 UTC 2016 - v3
+Tue 12 Jan 2016 22:13:59 IST - Resolved merged confolitcs
+Thu 14 Jan 20:28:30 UTC 2016 - Bulk update
+Fri 15 Jan 2016 01:59:56 IST - bulk update
+Fri 15 Jan 06:07:23 UTC 2016 - BUlk commit for CF updates
+Fri 15 Jan 06:08:27 UTC 2016 - Merged conflicts resolved
+Sat 16 Jan 03:39:42 UTC 2016 - included config file
+Sat 16 Jan 06:18:45 UTC 2016 - Candidate release v3
+Sun 17 Jan 2016 14:11:11 IST - New cfn-tools and config
+Sun 17 Jan 2016 18:46:23 IST - changed environment to production
+Mon 18 Jan 2016 10:31:15 IST - Release candidate 4
+Tue 19 Jan 11:06:01 UTC 2016 - bulk comiit for version 4
+Wed 20 Jan 06:51:12 UTC 2016 - removed unused snapshot controller
+Wed 20 Jan 07:32:58 UTC 2016 - Removed snapshots, created root controller
+Wed 20 Jan 08:20:17 UTC 2016 - Bulkk initil commit
