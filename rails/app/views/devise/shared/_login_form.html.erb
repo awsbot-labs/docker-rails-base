@@ -1,0 +1,41 @@
+                            <!-- jQuery Validation (.js-validation-login class is initialized in js/pages/base_pages_login.js) -->
+                            <!-- For more examples you can check out https://github.com/jzaefferer/jquery-validation -->
+                            <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'js-validation-login form-horizontal push-30-t push-50'}) do |f| %>
+                              <%= devise_error_messages! %>
+                              <div class="form-group">
+                                  <div class="col-xs-12">
+                                      <div class="form-material form-material-primary floating">
+                                          <%= f.label :email %><br />
+                                          <%= f.email_field :email, autofocus: true, class: 'form-control', placeholder: "Your email address" %>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <div class="col-xs-12">
+                                      <div class="form-material form-material-primary floating">
+                                          <%= f.label :password %><br />
+                                          <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: "Your password" %>
+                                      </div>
+                                  </div>
+                              </div>
+                              <% if devise_mapping.rememberable? -%>
+                              <div class="form-group">
+                                  <div class="col-xs-12">
+                                      <%= f.label(:remember_me, class: 'css-input switch switch-sm switch-primary col-xs-12 text-center' )do %>
+                                       <%= f.check_box :remember_me %>
+                                       <span></span>
+                                       <%= "Remember Me?"%>
+                                      <% end %>
+                                  </div>
+                              </div>
+                              <% end -%>
+                              <div class="form-group">
+                                  <div class="col-xs-12 col-sm-6 col-sm-offset-3">
+                                    <div class="actions">
+                                      <%= button_tag(type: 'submit', class: 'btn btn-block btn-primary') do %>
+                                        <i class="si si-login pull-right"></i> Log in
+                                      <% end %>
+                                    </div>
+                                  </div>
+                              </div>
+                            <% end %>

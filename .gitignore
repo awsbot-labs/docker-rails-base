@@ -38,3 +38,4 @@ bower.json
 *.out
 
 .DS_Store
+environment.sh

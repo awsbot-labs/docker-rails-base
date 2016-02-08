@@ -1,0 +1,88 @@
+<% content_for :js_code do %>
+  <!-- Page JS Plugins -->
+  <script src="/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+  <!-- Page JS Code -->
+  <script src="/assets/js/pages/base_pages_register.js"></script>
+  <script>
+    $(function () {
+        // Init page helpers (Appear plugin)
+        App.initHelpers('appear');
+    });
+  </script>
+<% end %>
+            <main id="main-container">
+                <!-- Hero Content -->
+                <div class="bg-success">
+                    <section class="content content-full content-boxed overflow-hidden">
+                        <!-- Section Content -->
+                        <div class="push-100-t push-50 text-center">
+                            <h1 class="h2 text-white push-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Sign up for a new account.</h1>
+                            <h2 class="h5 text-white-op visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Unlimited ideas. Unlimited power. Unlimited joy. Unlimited opportunities.</h2>
+                        </div>
+                        <div class="row visibility-hidden" data-toggle="appear" data-class="animated fadeInUp">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <img class="img-responsive pull-b" src="assets/img/various/promo2.jpg" alt="">
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Hero Content -->
+
+                <!-- Content -->
+                <div class="bg-white">
+                    <section class="content content-boxed">
+                        <!-- Section Content -->
+                        <div class="row items-push push-50-t push-30">
+                            <div class="col-md-6 col-md-offset-3">
+                                <%= render "devise/shared/signup_form" %>
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Content -->
+
+                <!-- Login -->
+                <div class="bg-gray-lighter">
+                    <section class="content content-full content-boxed">
+                        <!-- Section Content -->
+                        <div class="push-20-t push-20 text-center">
+                            <h3 class="h4 push-20 visibility-hidden" data-toggle="appear">Do you already have an account?</h3>
+                            <%= render "layouts/login_link" %>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Login -->
+
+                <!-- Terms Modal -->
+                <div class="modal fade" id="modal-signup-terms" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-popout">
+                        <div class="modal-content">
+                            <div class="block block-themed block-transparent remove-margin-b">
+                                <div class="block-header bg-primary-dark">
+                                    <ul class="block-options">
+                                        <li>
+                                            <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
+                                        </li>
+                                    </ul>
+                                    <h3 class="block-title">Terms &amp; Conditions</h3>
+                                </div>
+                                <div class="block-content">
+                                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                    <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-sm btn-default" type="button" data-dismiss="modal">Close</button>
+                                <button class="btn btn-sm btn-primary" type="button" data-dismiss="modal"><i class="fa fa-check"></i> I agree</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- END Terms Modal -->
+            </main>

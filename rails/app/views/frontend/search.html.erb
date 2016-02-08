@@ -1,0 +1,292 @@
+<% content_for :js_code do %>
+  <script>
+      $(function () {
+          // Init page helpers (Appear + CountTo plugins)
+          App.initHelpers(['appear', 'appear-countTo']);
+      });
+  </script>
+<% end %>
+            <!-- Main Container -->
+            <main id="main-container">
+                <!-- Hero Content -->
+                <div class="bg-primary-dark">
+                    <section class="content content-full content-boxed">
+                        <!-- Section Content -->
+                        <div class="push-100-t push-50 text-center">
+                            <h1 class="h2 text-white push-10 visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Search Results.</h1>
+                            <h2 class="h5 text-white-op visibility-hidden" data-toggle="appear" data-class="animated fadeInDown">Everything you are looking for is here.</h2>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Hero Content -->
+
+                <!-- Search Form -->
+                <div class="bg-white">
+                    <section class="content content-full content-boxed">
+                        <!-- Section Content -->
+                        <div class="row">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                <form action="frontend_search.html" method="post">
+                                    <div class="input-group input-group-lg">
+                                        <input class="form-control" type="text" placeholder="Search everything..">
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Search Form -->
+
+                <!-- Mini Stats -->
+                <div class="bg-gray-lighter">
+                    <section class="content content-boxed">
+                        <!-- Section Content -->
+                        <div class="row items-push text-center">
+                            <div class="col-xs-6">
+                                <div class="h1 push-5" data-toggle="countTo" data-to="270"></div>
+                                <div class="font-w600 text-uppercase text-muted">Pages</div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="h1 push-5" data-toggle="countTo" data-to="590"></div>
+                                <div class="font-w600 text-uppercase text-muted">Users</div>
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Mini Stats -->
+
+                <!-- Results -->
+                <div class="bg-white">
+                    <section class="content content-boxed">
+                        <!-- Section Content -->
+                        <div class="block block-transparent">
+                            <ul class="nav nav-tabs nav-justified nav-tabs-alt" data-toggle="tabs">
+                                <li class="active">
+                                    <a href="#front-search-pages">Pages</a>
+                                </li>
+                                <li>
+                                    <a href="#front-search-users">Users</a>
+                                </li>
+                            </ul>
+                            <div class="block-content tab-content bg-white">
+                                <!-- Pages -->
+                                <div class="tab-pane fade fade-right in active push-30-t" id="front-search-pages">
+                                    <div class="row items-push">
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row items-push">
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row items-push">
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                    </div>
+                                    <div class="row items-push">
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <h3 class="h5 font-w600">
+                                                <a class="link-effect" href="javascript:void(0)">OneUI - Admin UI Framework</a>
+                                            </h3>
+                                            <div class="font-s13 text-success push-5">http://pixelcave.com/oneui/</div>
+                                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
+                                        </div>
+                                    </div>
+                                    <div class="text-center">
+                                        <ul class="pagination">
+                                            <li class="disabled"><a href="javascript:void(0)">Prev</a></li>
+                                            <li class="active"><a href="javascript:void(0)">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><span>...</span></li>
+                                            <li><a href="javascript:void(0)">10</a></li>
+                                            <li><a href="javascript:void(0)">Next</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- END Pages -->
+
+                                <!-- Users -->
+                                <div class="tab-pane fade fade-left push-30-t" id="front-search-users">
+                                    <table class="table table-borderless table-striped table-vcenter">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center" style="width: 100px;"><i class="si si-user"></i></th>
+                                                <th>Name</th>
+                                                <th class="hidden-xs" style="width: 30%;">Email</th>
+                                                <th class="hidden-xs hidden-sm" style="width: 15%;">Access</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar12.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Adam Hall</td>
+                                                <td class="hidden-xs">client1@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-success">VIP</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar7.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Susan Elliott</td>
+                                                <td class="hidden-xs">client2@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-danger">Disabled</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar4.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Sara Holland</td>
+                                                <td class="hidden-xs">client3@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-primary">Personal</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar1.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Laura Bell</td>
+                                                <td class="hidden-xs">client4@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-primary">Personal</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar9.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">John Parker</td>
+                                                <td class="hidden-xs">client5@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-info">Business</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar11.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">John Parker</td>
+                                                <td class="hidden-xs">client6@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-info">Business</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar2.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Ashley Welch</td>
+                                                <td class="hidden-xs">client7@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-warning">Trial</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar13.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Jeremy Fuller</td>
+                                                <td class="hidden-xs">client8@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-danger">Disabled</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-center">
+                                                    <img class="img-avatar img-avatar48" src="assets/img/avatars/avatar13.jpg" alt="">
+                                                </td>
+                                                <td class="font-w600">Vincent Sims</td>
+                                                <td class="hidden-xs">client9@example.com</td>
+                                                <td class="hidden-xs hidden-sm">
+                                                    <span class="label label-success">VIP</span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="text-center">
+                                        <ul class="pagination">
+                                            <li class="disabled"><a href="javascript:void(0)">Prev</a></li>
+                                            <li class="active"><a href="javascript:void(0)">1</a></li>
+                                            <li><a href="javascript:void(0)">2</a></li>
+                                            <li><span>...</span></li>
+                                            <li><a href="javascript:void(0)">10</a></li>
+                                            <li><a href="javascript:void(0)">Next</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- END Users -->
+                            </div>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Results -->
+
+                <!-- Log In -->
+                <div class="bg-gray-lighter">
+                    <section class="content content-full content-boxed">
+                        <!-- Section Content -->
+                        <div class="push-20-t push-20 text-center">
+                            <h3 class="h4 push-20 visibility-hidden" data-toggle="appear">Would you like to see more examples?</h3>
+                            <%= render "layouts/login_link" %>
+                        </div>
+                        <!-- END Section Content -->
+                    </section>
+                </div>
+                <!-- END Log In -->
+            </main>

@@ -1,0 +1,6 @@
+#!/bin/bash
+ENV_FILE=${ENV_FILE:-environment.sh}
+if [ -e "$ENV_FILE" ]; then
+  source $ENV_FILE
+fi
+rails s

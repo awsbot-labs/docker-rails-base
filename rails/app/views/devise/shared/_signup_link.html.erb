@@ -1,0 +1,4 @@
+                            <h3 class="h4 push-20 visibility-hidden" data-toggle="appear">Don’t have an account?</h3>
+                            <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                              <%= link_to "Sign Up Today", new_registration_path(resource_name), class: 'btn btn-rounded btn-noborder btn-lg btn-success visibility-hidden', 'data-toggle': 'appear', 'data-class': 'animated bounceIn' %><br />
+                            <% end -%>

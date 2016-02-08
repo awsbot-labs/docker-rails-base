@@ -1,0 +1,4 @@
+                            <h3 class="h4 push-20 visibility-hidden" data-toggle="appear">Do you already have an account?</h3>
+                            <%- if controller_name != 'sessions' %>
+                              <%= link_to "Log In", new_session_path(resource_name), class: "btn btn-rounded btn-noborder btn-lg btn-success visibility-hidden", 'data-toggle': 'appear', 'data-class': 'animated bounceIn' %><br />
+                            <% end -%>
