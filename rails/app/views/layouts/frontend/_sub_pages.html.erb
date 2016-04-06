@@ -1,0 +1,24 @@
+                                    <ul>
+                                        <li>
+                                            <%= link_to "Team", :frontend_team, class: active_link?(frontend_team_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Support", :frontend_support, class: active_link?(frontend_support_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Search", :frontend_search, class: active_link?(frontend_search_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "About", :frontend_about, class: active_link?(frontend_about_path) %>
+                                        </li>
+                                        <% if !user_signed_in? %>
+                                        <li>
+                                            <%= link_to "Log In", :frontend_log_in, class: active_link?(frontend_log_in_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Sign Up", :frontend_sign_up, class: active_link?(frontend_sign_up_path) %>
+                                        </li>
+                                        <% else %>
+                                            <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+                                        <% end %>
+                                    </ul>

@@ -1,5 +1,8 @@
 class FrontendController < ApplicationController
   #layout "frontend"
+  def index
+  end
+  
   def about
   end
   

@@ -74,11 +74,11 @@ class FrontendControllerTest < ActionController::TestCase
     assert_template layout: "layouts/application"
   end
   
-  # get '/home', to: 'frontend#home', as: 'frontend_home'
-  test "should get home" do
-    get :home
+  # get '/', to: 'frontend#index', as: 'frontend_index'
+  test "should get index" do
+    get :index
     assert_response :success
-    assert_template :home
+    assert_template :index
     assert_template layout: "layouts/application"
   end
   
@@ -131,11 +131,11 @@ class FrontendControllerTest < ActionController::TestCase
     assert_template layout: "layouts/application"
   end
 
-  # root 'frontend#home'
+  # root 'frontend#index'
   test "should get root" do
-    get :home
+    get :index
     assert_response :success
-    assert_template :home
+    assert_template :index
     assert_template layout: "layouts/application"
   end
   
@@ -223,12 +223,12 @@ class FrontendControllerTest < ActionController::TestCase
     assert_template layout: "layouts/application"
   end
   
-  # get '/home', to: 'frontend#home', as: 'frontend_home'
-  test "should get home when signed in" do
+  # get '/index', to: 'frontend#index', as: 'frontend_index'
+  test "should get index when signed in" do
     sign_in users(:one)
-    get :home
+    get :index
     assert_response :success
-    assert_template :home
+    assert_template :index
     assert_template layout: "layouts/application"
   end
   
@@ -286,12 +286,12 @@ class FrontendControllerTest < ActionController::TestCase
     assert_template layout: "layouts/application"
   end
 
-  # root 'frontend#home'
+  # root 'frontend#index'
   test "should get root when signed in" do
     sign_in users(:one)
-    get :home
+    get :index
     assert_response :success
-    assert_template :home
+    assert_template :index
     assert_template layout: "layouts/application"
   end
 end

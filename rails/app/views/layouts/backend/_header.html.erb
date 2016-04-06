@@ -10,33 +10,23 @@
                             <ul class="dropdown-menu dropdown-menu-right">
                                 <li class="dropdown-header">Profile</li>
                                 <li>
-                                    <a tabindex="-1" href="base_pages_inbox.html">
-                                        <i class="si si-envelope-open pull-right"></i>
-                                        <span class="badge badge-primary pull-right">3</span>Inbox
-                                    </a>
+                                    <%= link_to '<i class="si si-envelope-open pull-right"></i>
+                                        <span class="badge badge-primary pull-right">3</span>Inbox'.html_safe, :backend_pages_inbox, 'tabindex': '-1' %>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="base_pages_profile.html">
-                                        <i class="si si-user pull-right"></i>
-                                        <span class="badge badge-success pull-right">1</span>Profile
-                                    </a>
+                                    <%= link_to '<i class="si si-user pull-right"></i>
+                                        <span class="badge badge-success pull-right">1</span>Profile'.html_safe, :backend_pages_profile, 'tabindex': '-1' %>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="javascript:void(0)">
-                                        <i class="si si-settings pull-right"></i>Settings
-                                    </a>
+                                    <%= link_to '<i class="si si-settings pull-right"></i>Settings'.html_safe, :backend_pages_profile, 'tabindex': '-1' %>
                                 </li>
                                 <li class="divider"></li>
                                 <li class="dropdown-header">Actions</li>
                                 <li>
-                                    <a tabindex="-1" href="base_pages_lock.html">
-                                        <i class="si si-lock pull-right"></i>Lock Account
-                                    </a>
+                                    <%= link_to '<i class="si si-lock pull-right"></i>Lock Account'.html_safe, :backend_pages_lock, 'tabindex': '-1' %>
                                 </li>
                                 <li>
-                                    <a tabindex="-1" href="base_pages_login.html">
-                                        <i class="si si-logout pull-right"></i>Log out
-                                    </a>
+                                   <%= link_to '<i class="si si-logout pull-right"></i>Log out'.html_safe, :destroy_user_session, 'tabindex': '-1', 'data-method': :delete %>
                                 </li>
                             </ul>
                         </div>

@@ -58,196 +58,197 @@
                         <div class="side-content">
                             <ul class="nav-main">
                                 <li>
-                                    <%= link_to '<i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span>'.html_safe, :backend_index, class: "active" %>
+                                    <%= link_to '<i class="si si-speedometer"></i><span class="sidebar-mini-hide">Dashboard</span>'.html_safe, :backend_index, class: active_link?(backend_index_path) %>
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-hide">User Interface</span></li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-badge"></i><span class="sidebar-mini-hide">UI Elements</span></a>
+                                <li class="<%= link_open?("ui") %>">
+                                    <%= link_to '<i class="si si-badge"></i><span class="sidebar-mini-hide">UI Elements</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("ui") %>
                                     <ul>
                                         <li>
-                                            <%= link_to "Widgets", :backend_ui_widgets %>
+                                            <%= link_to "Widgets", :backend_ui_widgets, class: active_link?(backend_ui_widgets_path) %>
                                         </li>
-                                        <li>
-                                            <a class="nav-submenu" data-toggle="nav-submenu" href="#">Blocks</a>
+                                        <li class="<%= link_open?("blocks") %>">
+                                            <%= link_to 'Blocks'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("blocks") %>
                                             <ul>
                                                 <li>
-                                                    <%= link_to "Styles", :backend_ui_blocks %>
+                                                    <%= link_to "Styles", :backend_ui_blocks, class: active_link?(backend_ui_blocks_path)  %>
                                                 </li>
                                                 <li>
-                                                    <%= link_to "Blocks API", :backend_ui_blocks_api %>
+                                                    <%= link_to "Blocks API", :backend_ui_blocks_api, class: active_link?(backend_ui_blocks_api_path)  %>
                                                 </li>
                                                 <li>
-                                                    <%= link_to "Draggable", :backend_ui_blocks_draggable %>
+                                                    <%= link_to "Draggable", :backend_ui_blocks_draggable, class: active_link?(backend_ui_blocks_draggable_path)  %>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <%= link_to "Grid", :backend_ui_grid %>
+                                            <%= link_to "Grid", :backend_ui_grid, class: active_link?(backend_ui_grid_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Typography", :backend_ui_typography %>
+                                            <%= link_to "Typography", :backend_ui_typography, class: active_link?(backend_ui_typography_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Icons", :backend_ui_icons %>
+                                            <%= link_to "Icons", :backend_ui_icons, class: active_link?(backend_ui_icons_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Buttons", :backend_ui_buttons %>
+                                            <%= link_to "Buttons", :backend_ui_buttons, class: active_link?(backend_ui_buttons_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Activity", :backend_ui_activity %>
+                                            <%= link_to "Activity", :backend_ui_activity, class: active_link?(backend_ui_activity_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Tabs", :backend_ui_tabs %>
+                                            <%= link_to "Tabs", :backend_ui_tabs, class: active_link?(backend_ui_tabs_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Tiles", :backend_ui_tiles %>
+                                            <%= link_to "Tiles", :backend_ui_tiles, class: active_link?(backend_ui_tiles_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Timeline", :backend_ui_timeline %>
+                                            <%= link_to "Timeline", :backend_ui_timeline, class: active_link?(backend_ui_timeline_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Navigation", :backend_ui_navigation %>
+                                            <%= link_to "Navigation", :backend_ui_navigation, class: active_link?(backend_ui_navigation_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Modals & Tooltips", :backend_ui_modals_tooltips %>
+                                            <%= link_to "Modals & Tooltips", :backend_ui_modals_tooltips, class: active_link?(backend_ui_modals_tooltips_path)  %>
                                         </li>
                                         <li>
-                                            <%= link_to "Color Themes", :backend_ui_color_themes %>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-grid"></i><span class="sidebar-mini-hide">Tables</span></a>
-                                    <ul>
-                                        <li>
-                                            <a href="base_tables_styles.html">Styles</a>
-                                        </li>
-                                        <li>
-                                            <a href="base_tables_responsive.html">Responsive</a>
-                                        </li>
-                                        <li>
-                                            <a href="base_tables_tools.html">Tools</a>
-                                        </li>
-                                        <li>
-                                            <a href="base_tables_pricing.html">Pricing</a>
-                                        </li>
-                                        <li>
-                                            <a href="base_tables_datatables.html">DataTables</a>
+                                            <%= link_to "Color Themes", :backend_ui_color_themes, class: active_link?(backend_ui_color_themes_path) %>
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-note"></i><span class="sidebar-mini-hide">Forms</span></a>
+                                <li class="<%= link_open?("tables") %>">
+                                    <%= link_to '<i class="si si-grid"></i><span class="sidebar-mini-hide">Tables</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("tables") %>
                                     <ul>
                                         <li>
-                                            <a href="base_forms_premade.html">Pre-made</a>
+                                            <%= link_to "Styles", :backend_tables_styles, class: active_link?(backend_tables_styles_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_forms_elements.html">Elements</a>
+                                            <%= link_to "Responsive", :backend_tables_responsive, class: active_link?(backend_tables_responsive_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_forms_pickers_more.html">Pickers &amp; More</a>
+                                            <%= link_to "Tools", :backend_tables_tools, class: active_link?(backend_tables_tools_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_forms_editors.html">Text Editors</a>
+                                            <%= link_to "Pricing", :backend_tables_pricing, class: active_link?(backend_tables_pricing_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_forms_validation.html">Validation</a>
+                                            <%= link_to "DataTables", :backend_tables_datatables, class: active_link?(backend_tables_datatables_path) %>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="<%= link_open?("forms") %>">
+                                  <%= link_to '<i class="si si-note"></i><span class="sidebar-mini-hide">Forms</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("forms") %>
+                                    <ul>
+                                        <li>
+                                            <%= link_to "Pre-made", :backend_forms_premade, class: active_link?(backend_forms_premade_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_forms_wizard.html">Wizard</a>
+                                            <%= link_to "Elements", :backend_forms_elements, class: active_link?(backend_forms_elements_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Pickers &amp; More".html_safe, :backend_forms_pickers_more, class: active_link?(backend_forms_pickers_more_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Text Editors", :backend_forms_editors, class: active_link?(backend_forms_editors_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Validation", :backend_forms_validation, class: active_link?(backend_forms_validation_path) %>
+                                        </li>
+                                        <li>
+                                            <%= link_to "Wizard", :backend_forms_wizard, class: active_link?(backend_forms_wizard_path) %>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-hide">Develop</span></li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-wrench"></i><span class="sidebar-mini-hide">Components</span></a>
+                                <li class="<%= link_open?("components") %>">
+                                  <%= link_to '<i class="si si-wrench"></i><span class="sidebar-mini-hide">Components</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("components") %>
                                     <ul>
                                         <li>
-                                            <a href="base_comp_images.html">Images</a>
+                                          <%= link_to "Images", :backend_components_images, class: active_link?(backend_components_images_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_charts.html">Charts</a>
+                                          <%= link_to "Charts", :backend_components_charts, class: active_link?(backend_components_charts_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_calendar.html">Calendar</a>
+                                          <%= link_to "Calendar", :backend_components_calendar, class: active_link?(backend_components_calendar_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_sliders.html">Sliders</a>
+                                          <%= link_to "Sliders", :backend_components_sliders, class: active_link?(backend_components_sliders_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_animations.html">Animations</a>
+                                          <%= link_to "Animations", :backend_components_animations, class: active_link?(backend_components_animations_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_scrolling.html">Scrolling</a>
+                                          <%= link_to "Scrolling", :backend_components_scrolling, class: active_link?(backend_components_scrolling_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_syntax_highlighting.html">Syntax Highlighting</a>
+                                          <%= link_to "Syntax Highlighting", :backend_components_syntax_highlighting, class: active_link?(backend_components_syntax_highlighting_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_rating.html">Rating</a>
+                                          <%= link_to "Rating", :backend_components_rating, class: active_link?(backend_components_rating_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_comp_treeview.html">Tree View</a>
+                                          <%= link_to "Tree View", :backend_components_treeview, class: active_link?(backend_components_treeview_path) %>
                                         </li>
-                                        <li>
+                                        <li class="<%= link_open?("maps") %>">
                                             <a class="nav-submenu" data-toggle="nav-submenu" href="#">Maps</a>
                                             <ul>
                                                 <li>
-                                                    <a href="base_comp_maps.html">Google</a>
+                                                  <%= link_to "Google", :backend_components_maps_google, class: active_link?(backend_components_maps_google_path) %>
                                                 </li>
                                                 <li>
-                                                    <a href="base_comp_maps_vector.html">Vector</a>
+                                                  <%= link_to "Vector", :backend_components_maps_vector, class: active_link?(backend_components_maps_vector_path) %>
                                                 </li>
                                             </ul>
                                         </li>
-                                        <li>
+                                        <li class="<%= link_open?("gallery") %>">
                                             <a class="nav-submenu" data-toggle="nav-submenu" href="#">Gallery</a>
                                             <ul>
                                                 <li>
-                                                    <a href="base_comp_gallery_simple.html">Simple</a>
+                                                   <%= link_to "Simple", :backend_components_gallery_simple, class: active_link?(backend_components_gallery_simple_path) %>
                                                 </li>
                                                 <li>
-                                                    <a href="base_comp_gallery_advanced.html">Advanced</a>
+                                                   <%= link_to "Advanced", :backend_components_gallery_advanced, class: active_link?(backend_components_gallery_advanced_path) %>
                                                 </li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-magic-wand"></i><span class="sidebar-mini-hide">Layouts</span></a>
+                                <li class="<%= link_open?("layouts") %>">
+                                  <%= link_to '<i class="si si-magic-wand"></i><span class="sidebar-mini-hide">Layouts</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("layouts") %>
                                     <ul>
                                         <li>
-                                            <a href="base_layouts_api.html">Layout API</a>
+                                            <%= link_to "Layout API", :backend_layouts_api, class: active_link?(backend_layouts_api_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_default.html">Default</a>
+                                            <%= link_to "Default", :backend_layouts_default, class: active_link?(backend_layouts_default_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_default_flipped.html">Default Flipped</a>
+                                            <%= link_to "Default Flipped", :backend_layouts_default_flipped, class: active_link?(backend_layouts_default_flipped_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_header_static.html">Static Header</a>
+                                            <%= link_to "Static Header", :backend_layouts_header_static, class: active_link?(backend_layouts_header_static_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_sidebar_mini_hoverable.html">Mini Sidebar (Hoverable)</a>
+                                            <%= link_to "Mini Sidebar (Hoverable)", :backend_layouts_sidebar_mini_hoverable, class: active_link?(backend_layouts_sidebar_mini_hoverable_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_side_overlay_hoverable.html">Side Overlay (Hoverable)</a>
+                                            <%= link_to "Side Overlay (Hoverable)", :backend_layouts_side_overlay_hoverable, class: active_link?(backend_layouts_side_overlay_hoverable_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_side_overlay_open.html">Side Overlay (Open)</a>
+                                            <%= link_to "Side Overlay (Open)", :backend_layouts_side_overlay_open, class: active_link?(backend_layouts_side_overlay_open_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_side_native_scrolling.html">Side Native Scrolling</a>
+                                            <%= link_to "Side Native Scrolling", :backend_layouts_side_native_scrolling, class: active_link?(backend_layouts_side_native_scrolling_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_layouts_sidebar_hidden.html">Hidden Sidebar</a>
+                                            <%= link_to "Hidden Sidebar", :backend_layouts_sidebar_hidden, class: active_link?(backend_layouts_sidebar_hidden_path) %>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-puzzle"></i><span class="sidebar-mini-hide">Multi Level Menu</span></a>
+                                <li>
+                                  <%= link_to '<i class="si si-puzzle"></i><span class="sidebar-mini-hide">Multi Level Menu</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("multi_level_menu") %>
                                     <ul>
                                         <li>
                                             <a href="#">Link 1-1</a>
@@ -313,102 +314,103 @@
                                     </ul>
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-hide">Pages</span></li>
-                                <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-layers"></i><span class="sidebar-mini-hide">Generic</span></a>
+                                <li class="<%= link_open?("pages") %>">
+                                  <%= link_to '<i class="si si-layers"></i><span class="sidebar-mini-hide">Generic</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("generic") %>
                                     <ul>
                                         <li>
-                                            <a href="base_pages_blank.html">Blank</a>
+                                            <%= link_to "Blank", :backend_pages_blank, class: active_link?(backend_pages_blank_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_profile.html">User Profile</a>
+                                            <%= link_to "User Profile", :backend_pages_profile, class: active_link?(backend_pages_profile_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_search.html">Search Results</a>
+                                            <%= link_to "Search Results", :backend_pages_search, class: active_link?(backend_pages_search_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_invoice.html">Invoice</a>
+                                            <%= link_to "Invoice", :backend_pages_invoice, class: active_link?(backend_pages_invoice_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_faq.html">FAQ</a>
+                                            <%= link_to "FAQ", :backend_pages_faq, class: active_link?(backend_pages_faq_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_inbox.html">Inbox</a>
+                                            <%= link_to "Inbox", :backend_pages_inbox, class: active_link?(backend_pages_inbox_path) %>
                                         </li>
-                                        <li>
+                                        <li class="<%= link_open?("forum") %>">
                                             <a class="nav-submenu" data-toggle="nav-submenu" href="#">Forum</a>
                                             <ul>
                                                 <li>
-                                                    <a href="base_pages_forum_categories.html">Categories</a>
+                                                    <%= link_to "Categories", :backend_pages_forum_categories, class: active_link?(backend_pages_forum_categories_path) %>
                                                 </li>
                                                 <li>
-                                                    <a href="base_pages_forum_topics.html">Topics</a>
+                                                    <%= link_to "Topics", :backend_pages_forum_topics, class: active_link?(backend_pages_forum_topics_path) %>
                                                 </li>
                                                 <li>
-                                                    <a href="base_pages_forum_discussion.html">Discussion</a>
+                                                    <%= link_to "Discussion", :backend_pages_forum_discussion, class: active_link?(backend_pages_forum_discussion_path) %>
                                                 </li>
                                                 <li>
-                                                    <a href="base_pages_forum_new_topic.html">New Topic</a>
+                                                    <%= link_to "New Topic", :backend_pages_forum_new_topic, class: active_link?(backend_pages_forum_new_topic_path) %>
                                                 </li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="base_pages_login.html">Log In</a>
+                                            <%= link_to "Log In", :backend_pages_login, class: active_link?(backend_pages_login_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_login_v2.html">Log In v2</a>
+                                            <%= link_to "Log In v2", :backend_pages_login_v2, class: active_link?(backend_pages_login_v2_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_register.html">Register</a>
+                                            <%= link_to "Register", :backend_pages_register, class: active_link?(backend_pages_register_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_register_v2.html">Register v2</a>
+                                            <%= link_to "Register v2", :backend_pages_register_v2, class: active_link?(backend_pages_register_v2_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_lock.html">Lock Screen</a>
+                                            <%= link_to "Lock Screen", :backend_pages_lock, class: active_link?(backend_pages_lock_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_lock_v2.html">Lock Screen v2</a>
+                                            <%= link_to "Lock Screen v2", :backend_pages_lock_v2, class: active_link?(backend_pages_lock_v2_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_reminder.html">Password Reminder</a>
+                                            <%= link_to "Password Reminder", :backend_pages_reminder, class: active_link?(backend_pages_reminder_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_reminder_v2.html">Password Reminder v2</a>
+                                            <%= link_to "Password Reminder v2", :backend_pages_reminder_v2, class: active_link?(backend_pages_reminder_v2_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_coming_soon.html">Coming Soon</a>
+                                            <%= link_to "Coming Soon", :backend_pages_coming_soon, class: active_link?(backend_pages_coming_soon_path) %>
                                         </li>
                                         <li>
-                                            <a href="base_pages_maintenance.html">Maintenance</a>
+                                            <%= link_to "Maintenance", :backend_pages_maintenance, class: active_link?(backend_pages_maintenance_path) %>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a class="nav-submenu" data-toggle="nav-submenu" href="#"><i class="si si-fire"></i><span class="sidebar-mini-hide">Error Pages</span></a>
+                                <li class="<%= link_open?("errors") %>">
+                                  <%= link_to '<i class="si si-fire"></i><span class="sidebar-mini-hide">Error Pages</span>'.html_safe, '#', 'data-toggle': 'nav-submenu', class: active_submenu?("errors") %>
                                     <ul>
                                         <li>
-                                            <a href="base_pages_400.html">400</a>
+                                            <a href="/400.html">400</a>
                                         </li>
                                         <li>
-                                            <a href="base_pages_401.html">401</a>
+                                            <a href="/401.html">401</a>
                                         </li>
                                         <li>
-                                            <a href="base_pages_403.html">403</a>
+                                            <a href="/403.html">403</a>
                                         </li>
                                         <li>
-                                            <a href="base_pages_404.html">404</a>
+                                            <a href="/404.html">404</a>
                                         </li>
                                         <li>
-                                            <a href="base_pages_500.html">500</a>
+                                            <a href="/500.html">500</a>
                                         </li>
                                         <li>
-                                            <a href="base_pages_503.html">503</a>
+                                            <a href="/503.html">503</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="nav-main-heading"><span class="sidebar-mini-hide">Apps</span></li>
                                 <li>
-                                    <a href="frontend_home.html"><i class="si si-rocket"></i><span class="sidebar-mini-hide">Frontend</span></a>
+                                    <%= link_to '<i class="si si-rocket"></i><span class="sidebar-mini-hide">Frontend</span>'.html_safe, :frontend_index %>
                                 </li>
                             </ul>
                         </div>

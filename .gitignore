@@ -39,3 +39,4 @@ bower.json
 
 .DS_Store
 environment.sh
+*.zip

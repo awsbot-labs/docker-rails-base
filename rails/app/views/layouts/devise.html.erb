@@ -2,7 +2,7 @@
 <!--[if IE 9]>         <html class="ie9 no-focus"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-focus"> <!--<![endif]-->
     <head>
-      <%= render "layouts/head" %>
+      <%= render "layouts/frontend/head" %>
     </head>
     <body>
         <!-- Page Container -->
@@ -31,7 +31,7 @@
         <%= render "devise/shared/footer" %>
         <!-- END Login Footer -->
         <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
-        <%= render "layouts/javascript" %>
+        <%= render "layouts/frontend/javascript" %>
 
         <!-- Page JS Code -->
         <%= yield :js_code %>
