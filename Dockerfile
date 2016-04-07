@@ -23,7 +23,10 @@ RUN apt-get update -qq && \
       libsqlite3-dev \
       sqlite3 \
       libmysqlclient-dev \
-      software-properties-common
+      software-properties-common \
+      postgresql \
+      postgresql-contrib \
+      libpq-dev
 
 RUN gem install rails -v '4.2.5' --no-ri --no-rdoc
 
