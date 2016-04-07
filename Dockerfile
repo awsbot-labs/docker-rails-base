@@ -21,14 +21,19 @@ RUN apt-get update -qq && \
       vim \
       nginx \
       libsqlite3-dev \
+      sqlite3 \
       libmysqlclient-dev \
       software-properties-common
 
-RUN gem install rails -v '4.2.0' --no-ri --no-rdoc
+RUN gem install rails -v '4.2.5' --no-ri --no-rdoc
 
 RUN bundle install
 RUN rake db:migrate
+RUN bundle exec rake assets:precompile
 RUN rm -rf /$APP_NAME/tmp
 
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
+
+# This needs to be set when starting the docker image
+ENV SECRET_KEY_BASE ""

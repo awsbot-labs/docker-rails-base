@@ -204,7 +204,7 @@ class BackendControllerTest < ActionController::TestCase
   # components
   #
   # <a href="base_comp_images.html">Images</a>
-  test "should get backend componenets images" do
+  test "should get backend components images" do
     sign_in users(:one)
     get :components_images
     assert_response :success

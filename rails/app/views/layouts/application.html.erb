@@ -2,7 +2,7 @@
 <!--[if IE 9]>         <html class="ie9 no-focus"> <![endif]-->
 <!--[if gt IE 9]><!--> <html class="no-focus"> <!--<![endif]-->
     <head>
-      <%= render "layouts/frontend/head" %>
+      <%= render "layouts/head" %>
     </head>
     <body>
         <!-- Page Container -->
@@ -25,18 +25,43 @@
             'header-navbar-fixed'        Enables fixed header
             'header-navbar-transparent'  Enables a transparent header (if also fixed, it will get a solid dark background color on scrolling)
         -->
-        <!-- ><div id="page-container" class="header-navbar-fixed header-navbar-transparent"> -->
         <% if user_signed_in? %>
-        <div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent">
-            <!-- Sidebar -->
-            <%= render "layouts/frontend/sidebar" %>
-            <!-- END Sidebar -->
-          <% if request.path == "/home_header_nav" %>
-          <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
+          <% if controller.controller_name == "frontend" %>
+              <div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent">
+                <!-- Sidebar -->
+                <%= render "layouts/frontend/sidebar" %>
+                <!-- END Sidebar -->
+              <% if request.path == "/home_header_nav" %>
+                <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
+                    <!-- Header -->
+                    <%= render "layouts/frontend/header" %>
+                  <!-- END Header -->
+              <% end %>
+            <% else if controller.controller_name == "backend" %>
+            <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+              <!-- Side Overlay-->
+              <%= render "layouts/backend/side_overlay" %>
+              <!-- END Side Overlay -->
+
+              <!-- Sidebar -->
+              <%= render "layouts/backend/sidebar" %>
+              <!-- END Sidebar -->
+
               <!-- Header -->
-              <%= render "layouts/frontend/header" %>
+              <%= render "layouts/backend/header" %>
               <!-- END Header -->
-          <% end %>
+
+              <!-- Main Container -->
+              <main id="main-container">
+                  <%= yield %>
+              </main>
+              <!-- END Main Container -->
+
+              <!-- Footer -->
+              <%= render "layouts/backend/footer" %>
+              <!-- END Footer -->
+              <% end %>
+            <% end %>
         <% else %>
         <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
             <!-- Header -->
@@ -54,9 +79,7 @@
 
         <!-- OneUI Core JS: jQuery, Bootstrap, slimScroll, scrollLock, Appear, CountTo, Placeholder, Cookie and App.js -->
         <%= javascript_include_tag "application" %>
-        <%= render "layouts/frontend/javascript" %>
-
-        <!-- Page JS Code -->
+        <%= render "layouts/javascript" %>
         <%= yield :js_code %>
     </body>
 </html>

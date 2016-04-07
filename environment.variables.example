@@ -1,0 +1,15 @@
+#!/bin/bash
+# Docker
+VERSION=1
+IMAGE=dcrbsltd/rails
+# Rails 
+RAILS_ENV=production
+RAILS_SERVE_STATIC_FILES
+SECRET_KEY_BASE=alongstring
+# SMTP mailer settings
+SMTP_ADDRESS=smtp.gmail.com
+SMTP_DOMAIN=gmail.com
+SMTP_USERNAME=address@gmail.com
+SMTP_PASSWORD=secret123
+
+DEFAULT_URL_OPTIONS_HOST=$(docker-machine ip default)
