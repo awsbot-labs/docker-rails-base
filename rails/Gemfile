@@ -35,7 +35,7 @@ group :production do
   # Use Unicorn as the app server
   gem 'unicorn'
   # Use Postgres as the database for Active Record
-  gem 'pg'
+  #gem 'pg'
 end
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

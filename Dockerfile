@@ -23,17 +23,31 @@ RUN apt-get update -qq && \
       libsqlite3-dev \
       sqlite3 \
       libmysqlclient-dev \
-      software-properties-common \
-      postgresql \
-      postgresql-contrib \
-      libpq-dev
+      software-properties-common
+
+# Enable built in Postgres to start on boot and start for rake migration
+RUN apt-get install -y postgresql \
+       postgresql-contrib \
+       libpq-dev
+RUN update-rc.d postgresql enable && service postgresql start
 
 RUN gem install rails -v '4.2.5' --no-ri --no-rdoc
 
 RUN bundle install
 RUN rake db:migrate
 RUN bundle exec rake assets:precompile
-RUN rm -rf /$APP_NAME/tmp
+RUN rm -rf /$APP_NAME/tmp/*
+RUN mkdir -p /$APP_NAME/tmp/cache
+RUN mkdir -p /$APP_NAME/tmp/pids
+RUN mkdir -p /$APP_NAME/tmp/sessions
+RUN mkdir -p /$APP_NAME/tmp/sockets
+RUN mkdir -p /$APP_NAME/tmp/log
+
+# Unicorn and Nginx config
+COPY ./unicorn_rails /etc/init.d/unicorn_rails
+RUN chmod 755 /etc/init.d/unicorn_rails
+RUN update-rc.d unicorn_rails defaults
+COPY ./nginx_default /etc/nginx/sites-available/default
 
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]

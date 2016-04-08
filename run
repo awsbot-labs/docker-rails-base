@@ -5,5 +5,5 @@ if [ ! -e $ENV_FILE ]; then
   exit 1
 else
   source $ENV_FILE
-  docker run -d -p 80:3000 --env-file $ENV_FILE $IMAGE_NAME:$VERSION
+  docker run -d -p 80:80 --env-file $ENV_FILE $IMAGE_NAME:$VERSION
 fi

@@ -7,7 +7,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_grid
     assert_response :success
     assert_template :blog_grid
-    assert_template layout: "layouts/application"
   end
 
   # get '/list', to: 'frontend#blog_list', as: 'blog_list'
@@ -15,7 +14,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_list
     assert_response :success
     assert_template :blog_list
-    assert_template layout: "layouts/application"
   end
 
   # get '/story', to: 'frontend#blog_story', as: 'blog_story'
@@ -23,7 +21,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_story
     assert_response :success
     assert_template :blog_story
-    assert_template layout: "layouts/application"
   end
 
   # get '/story_cover', to: 'frontend#blog_story_cover', as: 'blog_story_cover'
@@ -31,7 +28,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_story_cover
     assert_response :success
     assert_template :blog_story_cover
-    assert_template layout: "layouts/application"
   end
 
   # get '/classic', to: 'frontend#blog_classic', as: 'blog_classic'
@@ -39,7 +35,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_classic
     assert_response :success
     assert_template :blog_classic
-    assert_template layout: "layouts/application"
   end
 
   # get '/about', to: 'frontend#about', as: 'frontend_about'
@@ -47,7 +42,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :about
     assert_response :success
     assert_template :about
-    assert_template layout: "layouts/application"
   end
   
   # get '/contact', to: 'frontend#contact', as: 'frontend_contact'
@@ -55,7 +49,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :contact
     assert_response :success
     assert_template :contact
-    assert_template layout: "layouts/application"
   end
   
   # get '/features', to: 'frontend#features', as: 'frontend_features'
@@ -63,7 +56,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :features
     assert_response :success
     assert_template :features
-    assert_template layout: "layouts/application"
   end
   
   # get '/home_header_nav', to: 'frontend#home_header_nav', as: 'frontend_home_header_nav'
@@ -71,7 +63,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :home_header_nav
     assert_response :success
     assert_template :home_header_nav
-    assert_template layout: "layouts/application"
   end
   
   # get '/', to: 'frontend#index', as: 'frontend_index'
@@ -79,7 +70,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_template :index
-    assert_template layout: "layouts/application"
   end
   
   # get '/login', to: 'frontend#login', as: 'frontend_log_in'
@@ -87,7 +77,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :login
     assert_response :success
     assert_template :login
-    assert_template layout: "layouts/application"
   end
   
   # get '/pricing', to: 'frontend#pricing', as: 'frontend_pricing'
@@ -95,7 +84,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :pricing
     assert_response :success
     assert_template :pricing
-    assert_template layout: "layouts/application"
   end
   
   # get '/search', to: 'frontend#search', as: 'frontend_search'
@@ -103,7 +91,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :search
     assert_response :success
     assert_template :search
-    assert_template layout: "layouts/application"
   end
   
   # get '/signup', to: 'frontend#signup', as: 'frontend_sign_up'
@@ -111,7 +98,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :signup
     assert_response :success
     assert_template :signup
-    assert_template layout: "layouts/application"
   end
   
   # get '/support', to: 'frontend#support', as: 'frontend_support'
@@ -120,7 +106,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :support
     assert_response :success
     assert_template :support
-    assert_template layout: "layouts/application"
   end
   
   # get '/team', to: 'frontend#team', as: 'frontend_team'
@@ -128,7 +113,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :team
     assert_response :success
     assert_template :team
-    assert_template layout: "layouts/application"
   end
 
   # root 'frontend#index'
@@ -136,7 +120,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_template :index
-    assert_template layout: "layouts/application"
   end
   
   #
@@ -148,7 +131,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_grid
     assert_response :success
     assert_template :blog_grid
-    assert_template layout: "layouts/application"
   end
 
   # get '/list', to: 'frontend#blog_list', as: 'blog_list'
@@ -157,7 +139,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_list
     assert_response :success
     assert_template :blog_list
-    assert_template layout: "layouts/application"
   end
 
   # get '/story', to: 'frontend#blog_story', as: 'blog_story'
@@ -166,7 +147,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_story
     assert_response :success
     assert_template :blog_story
-    assert_template layout: "layouts/application"
   end
 
   # get '/story_cover', to: 'frontend#blog_story_cover', as: 'blog_story_cover'
@@ -175,7 +155,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_story_cover
     assert_response :success
     assert_template :blog_story_cover
-    assert_template layout: "layouts/application"
   end
 
   # get '/classic', to: 'frontend#blog_classic', as: 'blog_classic'
@@ -184,7 +163,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :blog_classic
     assert_response :success
     assert_template :blog_classic
-    assert_template layout: "layouts/application"
   end
 
   # get '/about', to: 'frontend#about', as: 'frontend_about'
@@ -193,7 +171,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :about
     assert_response :success
     assert_template :about
-    assert_template layout: "layouts/application"
   end
   
   # get '/contact', to: 'frontend#contact', as: 'frontend_contact'
@@ -202,7 +179,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :contact
     assert_response :success
     assert_template :contact
-    assert_template layout: "layouts/application"
   end
   
   # get '/features', to: 'frontend#features', as: 'frontend_features'
@@ -211,7 +187,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :features
     assert_response :success
     assert_template :features
-    assert_template layout: "layouts/application"
   end
   
   # get '/home_header_nav', to: 'frontend#home_header_nav', as: 'frontend_home_header_nav'
@@ -220,7 +195,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :home_header_nav
     assert_response :success
     assert_template :home_header_nav
-    assert_template layout: "layouts/application"
   end
   
   # get '/index', to: 'frontend#index', as: 'frontend_index'
@@ -229,7 +203,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_template :index
-    assert_template layout: "layouts/application"
   end
   
   # get '/login', to: 'frontend#login', as: 'frontend_log_in'
@@ -238,7 +211,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :login
     assert_response :success
     assert_template :login
-    assert_template layout: "layouts/application"
   end
   
   # get '/pricing', to: 'frontend#pricing', as: 'frontend_pricing'
@@ -247,7 +219,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :pricing
     assert_response :success
     assert_template :pricing
-    assert_template layout: "layouts/application"
   end
   
   # get '/search', to: 'frontend#search', as: 'frontend_search'
@@ -256,7 +227,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :search
     assert_response :success
     assert_template :search
-    assert_template layout: "layouts/application"
   end
   
   # get '/signup', to: 'frontend#signup', as: 'frontend_sign_up'
@@ -265,7 +235,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :signup
     assert_response :success
     assert_template :signup
-    assert_template layout: "layouts/application"
   end
   
   # get '/support', to: 'frontend#support', as: 'frontend_support'
@@ -274,7 +243,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :support
     assert_response :success
     assert_template :support
-    assert_template layout: "layouts/application"
   end
   
   # get '/team', to: 'frontend#team', as: 'frontend_team'
@@ -283,7 +251,6 @@ class FrontendControllerTest < ActionController::TestCase
     get :team
     assert_response :success
     assert_template :team
-    assert_template layout: "layouts/application"
   end
 
   # root 'frontend#index'
@@ -292,6 +259,5 @@ class FrontendControllerTest < ActionController::TestCase
     get :index
     assert_response :success
     assert_template :index
-    assert_template layout: "layouts/application"
   end
 end

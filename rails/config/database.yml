@@ -21,7 +21,14 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: production
-  pool: 5
+  <<: *default
+  database: db/production.sqlite3
+  
+# Postgres setup
+# production:
+#   adapter: postgresql
+#   encoding: unicode
+#   database: production
+#   pool: 5
+#   host: localhost
+#   port: 5432
