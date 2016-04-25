@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  title: 'OneUI - Admin Dashboard Template & UI Framework'
+  description: 'OneUI - Admin Dashboard Template & UI Framework created by pixelcave and published on Themeforest'
+  logo: '<i class="fa fa-circle-o-notch text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">ne</span>'
+  tag_line: 'Design by <a class="font-w600" href="http://goo.gl/vNS3I" target="_blank">pixelcave</a>, programming by <a class="font-w600" href="http://awsbot.com" target="_blank">awsbot</a>'
+  copyright: '<a class="font-w600" href="http://awsbot.com" target="_blank">awsbot</a> &copy; <span class="js-year-copy"></span>'
+  contact_email: '<a href="mailto:dcrbsltd@gmail.com">dcrbsltd@gmail.com</a>'
+  company_name: 'DCR Business Solutions Ltd.'
+  company_phone: '<abbr title="Phone">t:</abbr> (555) 123-4567'
+  company_address: 'Behind a laptop, In a Cafe, <br>Somewhere on Planet Earth<br>010101010<br>'

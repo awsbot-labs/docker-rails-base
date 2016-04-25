@@ -37,6 +37,12 @@
                     <%= render "layouts/frontend/header" %>
                   <!-- END Header -->
               <% end %>
+              <!-- Main Container -->
+              <%= yield %>
+              <!-- END Main Container -->
+              <!-- Footer -->
+              <%= render "layouts/frontend/footer" %>
+              <!-- END Footer -->
             <% else if controller.controller_name == "backend" %>
             <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
               <!-- Side Overlay-->
@@ -67,13 +73,13 @@
             <!-- Header -->
             <%= render "layouts/frontend/header" %>
             <!-- END Header -->
-        <% end %>
             <!-- Main Container -->
             <%= yield %>
             <!-- END Main Container -->
             <!-- Footer -->
             <%= render "layouts/frontend/footer" %>
             <!-- END Footer -->
+        <% end %>
         </div>
         <!-- END Page Container -->
 
