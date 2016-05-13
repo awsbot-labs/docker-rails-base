@@ -50,7 +50,7 @@
                                 <%= t('company_phone').html_safe %>
                             </div>
                             <div class="font-s13">
-                                <i class="si si-envelope-open"></i> <%= t('contact_email').html_safe %>
+                                <i class="si si-envelope-open"></i> <a href="mailto:<%= ENV['SMTP_USERNAME'] %>"><%= ENV['SMTP_USERNAME'] %></a>
                             </div>
                         </div>
                     </div>

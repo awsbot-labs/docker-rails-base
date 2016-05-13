@@ -1,5 +1,5 @@
 class PagesController < BackendController
-  layout false
+
   # get '/blank', to: 'backend#pages_blank', as: 'backend_pages_blank'
   def pages_blank
   end
