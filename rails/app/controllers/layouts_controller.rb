@@ -1,5 +1,4 @@
 class LayoutsController < BackendController
-  layout "default_flipped"
   # get '/api', to: 'backend#api', as: 'backend_api'
   def api
     render layout: "application"
@@ -10,7 +9,7 @@ class LayoutsController < BackendController
   end
   # get '/flipped', to: 'backend#flipped', as: 'backend_flipped'
   def flipped
-    render layout: "devise"
+    render layout: "flipped"
   end
   # get '/header_static', to: 'backend#static', as: 'backend_static'
   def header_static

@@ -2,7 +2,5 @@
 ENV_FILE=${ENV_FILE:-environment.variables}
 if [ -e "../$ENV_FILE" ]; then
   source ../$ENV_FILE
-  echo "Sourcing $ENV_FILE"
-  env
 fi
 rails s

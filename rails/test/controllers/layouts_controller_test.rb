@@ -64,7 +64,7 @@ class LayoutsControllerTest < ActionController::TestCase
   test "should get backend layouts sidebar hidden" do
     sign_in users(:one)
     get :sidebar_hidden
-    assert_template layout: "layouts/sidebar_hidden"
+    assert_template layout: "layouts/sidebar_hidden"s
     assert_response :success
   end
 end
