@@ -43,7 +43,7 @@
               <!-- Footer -->
               <%= render "layouts/frontend/footer" %>
               <!-- END Footer -->
-            <% else if controller.controller_name == "backend" %>
+          <% else %>
             <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
               <!-- Side Overlay-->
               <%= render "layouts/backend/side_overlay" %>
@@ -66,8 +66,7 @@
               <!-- Footer -->
               <%= render "layouts/backend/footer" %>
               <!-- END Footer -->
-              <% end %>
-            <% end %>
+          <% end %>
         <% else %>
         <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
             <!-- Header -->
