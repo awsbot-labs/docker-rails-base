@@ -5,9 +5,12 @@ PORT = 3000
 VERSION = 1
 ENV ?= local
 DATE = $(shell date)
-.PHONY: all build clean test tag_latest release ssl
+.PHONY: all build clean test tag_latest release ssl run
 
 all: build
+
+run:
+	@bash ./bin/run
 
 build:
 	docker build -f Dockerfile -t $(NAME):$(VERSION) .

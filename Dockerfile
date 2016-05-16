@@ -49,7 +49,7 @@ RUN chmod 755 /etc/init.d/unicorn_rails
 RUN update-rc.d unicorn_rails defaults
 COPY ./conf/nginx_default /etc/nginx/sites-available/default
 
-COPY ./docker-entrypoint.sh /
+COPY ./conf/docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # This needs to be set when starting the docker image

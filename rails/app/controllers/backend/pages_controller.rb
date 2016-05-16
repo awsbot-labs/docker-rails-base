@@ -1,4 +1,5 @@
 class PagesController < BackendController
+  layout false
 
   # get '/blank', to: 'backend#pages_blank', as: 'backend_pages_blank'
   def pages_blank
@@ -23,9 +24,6 @@ class PagesController < BackendController
   end
   # get '/forum/topics', to: 'backend#pages_forum_topics', as: 'backend_pages_forum_topics'
   def pages_forum_discussion
-  end
-  # get '/forum/discussion', to: 'backend#pages_forum_discussion', as: 'backend_pages_forum_discussion'
-  def pages_forum_disucssion
   end
   # get '/forum/new_topic', to: 'backend#pages_forum_new_topic', as: 'backend_pages_forum_new_topic'
   def pages_forum_new_topic
@@ -67,7 +65,7 @@ class PagesController < BackendController
     render layout: false
   end
   # get '/maintenance', to: 'backend#pages_maintenance', as: 'backend_pages_maintenance'
-  def pages_maintenance
+  def maintenance
     render layout: false
   end
 end
