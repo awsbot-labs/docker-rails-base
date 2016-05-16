@@ -20,8 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  title: 'OneUI - Admin Dashboard Template & UI Framework'
-  description: 'OneUI - Admin Dashboard Template & UI Framework created by pixelcave and published on Themeforest'
+  title: 'rails@awsbot.com // The Greatest Rails Portfolio in the history of History'
+  description: 'rails@awsbot.com // The Greatest Rails Portfolio in the history of History'
   logo: '<i class="fa fa-circle-o-notch text-primary"></i> <span class="h4 font-w600 sidebar-mini-hide">ne</span>'
   tag_line: 'Design by <a class="font-w600" href="http://goo.gl/vNS3I" target="_blank">pixelcave</a>, programming by <a class="font-w600" href="http://awsbot.com" target="_blank">awsbot</a>'
   copyright: '<a class="font-w600" href="http://awsbot.com" target="_blank">awsbot</a> &copy; <span class="js-year-copy"></span>'

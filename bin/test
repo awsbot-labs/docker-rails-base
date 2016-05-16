@@ -78,7 +78,7 @@ else
         --capabilities CAPABILITY_IAM \
         --parameters \
   ParameterKey=SSHLocation,ParameterValue="$IPADDRESS/32" \
-  ParameterKey=KeyName,ParameterValue=default \
+  ParameterKey=KeyName,ParameterValue=${KEY_NAME:-default} \
   ParameterKey=AppName,ParameterValue=$APP_NAME \
   ParameterKey=DNSDomain,ParameterValue=$DNS_DOMAIN \
   #> /dev/null 2>&1

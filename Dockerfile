@@ -44,10 +44,10 @@ RUN mkdir -p /$APP_NAME/tmp/sockets
 RUN mkdir -p /$APP_NAME/tmp/log
 
 # Unicorn and Nginx config
-COPY ./unicorn_rails /etc/init.d/unicorn_rails
+COPY ./conf/unicorn_rails /etc/init.d/unicorn_rails
 RUN chmod 755 /etc/init.d/unicorn_rails
 RUN update-rc.d unicorn_rails defaults
-COPY ./nginx_default /etc/nginx/sites-available/default
+COPY ./conf/nginx_default /etc/nginx/sites-available/default
 
 COPY ./docker-entrypoint.sh /
 ENTRYPOINT ["/docker-entrypoint.sh"]
