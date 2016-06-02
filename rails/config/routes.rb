@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :articles
+  #devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # backend
-  get '/', to: 'backend#index', as: 'backend_index'
+  get '/backend', to: 'backend#index', as: 'backend_index'
   scope '/ui' do
     get '/widgets', to: 'ui#widgets', as: 'backend_ui_widgets'
     get '/blocks', to: 'ui#blocks', as: 'backend_ui_blocks'
@@ -91,7 +93,7 @@ Rails.application.routes.draw do
     get '/support', to: 'frontend#support', as: 'frontend_support'
     get '/search', to: 'frontend#search', as: 'frontend_search'
     get '/about', to: 'frontend#about', as: 'frontend_about'
-    get '/login', to: 'frontend#login', as: 'frontend_log_in'
+    get '/signin', to: 'frontend#login', as: 'frontend_sign_in'
     get '/signup', to: 'frontend#signup', as: 'frontend_sign_up'
   end
 

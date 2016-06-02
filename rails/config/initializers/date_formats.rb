@@ -1,0 +1,1 @@
+Time::DATE_FORMATS[:article_format] = 'on %B %e, %Y &bull; <em>%k:%M</em>'

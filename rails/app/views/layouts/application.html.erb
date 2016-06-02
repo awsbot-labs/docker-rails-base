@@ -44,7 +44,7 @@
               <%= render "layouts/frontend/footer" %>
               <!-- END Footer -->
           <% else %>
-            <div id="page-container" class="sidebar-l sidebar-o side-scroll header-navbar-fixed">
+            <div id="page-container" class="<%= page_container_class?(params[:layout]) %>">
               <!-- Side Overlay-->
               <%= render "layouts/backend/side_overlay" %>
               <!-- END Side Overlay -->
@@ -79,6 +79,7 @@
             <%= render "layouts/frontend/footer" %>
             <!-- END Footer -->
         <% end %>
+        <%= render "layouts/modals/apps" %>
         </div>
         <!-- END Page Container -->
 

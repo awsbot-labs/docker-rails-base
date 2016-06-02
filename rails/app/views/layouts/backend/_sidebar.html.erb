@@ -186,25 +186,25 @@
                                             <%= link_to "Default", :backend_layouts_default, class: active_link?(backend_layouts_default_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Default Flipped", :backend_layouts_default_flipped, class: active_link?(backend_layouts_default_flipped_path) %>
+                                            <%= link_to "Default Flipped", backend_layouts_default_flipped_path(:layout => 'flipped'), class: active_link?(backend_layouts_default_flipped_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Static Header", :backend_layouts_header_static, class: active_link?(backend_layouts_header_static_path) %>
+                                            <%= link_to "Static Header", backend_layouts_header_static_path(:layout => 'header_static'), class: active_link?(backend_layouts_header_static_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Mini Sidebar (Hoverable)", :backend_layouts_sidebar_mini_hoverable, class: active_link?(backend_layouts_sidebar_mini_hoverable_path) %>
+                                            <%= link_to "Mini Sidebar (Hoverable)", backend_layouts_sidebar_mini_hoverable_path(:layout => 'sidebar_mini_hoverable'), class: active_link?(backend_layouts_sidebar_mini_hoverable_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Side Overlay (Hoverable)", :backend_layouts_side_overlay_hoverable, class: active_link?(backend_layouts_side_overlay_hoverable_path) %>
+                                            <%= link_to "Side Overlay (Hoverable)", backend_layouts_side_overlay_hoverable_path(:layout => 'side_overlay_overable'), class: active_link?(backend_layouts_side_overlay_hoverable_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Side Overlay (Open)", :backend_layouts_side_overlay_open, class: active_link?(backend_layouts_side_overlay_open_path) %>
+                                            <%= link_to "Side Overlay (Open)", backend_layouts_side_overlay_open_path(:layout => 'side_overlay_open'), class: active_link?(backend_layouts_side_overlay_open_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Side Native Scrolling", :backend_layouts_side_native_scrolling, class: active_link?(backend_layouts_side_native_scrolling_path) %>
+                                            <%= link_to "Side Native Scrolling", backend_layouts_side_native_scrolling_path(:layout => 'side_native_scrolling'), class: active_link?(backend_layouts_side_native_scrolling_path) %>
                                         </li>
                                         <li>
-                                            <%= link_to "Hidden Sidebar", :backend_layouts_sidebar_hidden, class: active_link?(backend_layouts_sidebar_hidden_path) %>
+                                            <%= link_to "Hidden Sidebar", backend_layouts_sidebar_hidden_path(:layout => 'sidebar_hidden'), class: active_link?(backend_layouts_sidebar_hidden_path) %>
                                         </li>
                                     </ul>
                                 </li>
