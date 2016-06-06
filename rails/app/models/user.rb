@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
        user.image      = auth.info.image # assuming the user model has an image
      end
    end
+
    # def self.from_omniauth(access_token)
    #     data = access_token.info
    #     user = User.where(:email => data["email"]).first

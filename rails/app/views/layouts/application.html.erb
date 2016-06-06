@@ -25,26 +25,7 @@
             'header-navbar-fixed'        Enables fixed header
             'header-navbar-transparent'  Enables a transparent header (if also fixed, it will get a solid dark background color on scrolling)
         -->
-        <% if user_signed_in? %>
-          <% if controller.controller_name == "frontend" %>
-              <div id="page-container" class="sidebar-l sidebar-mini sidebar-o side-scroll header-navbar-fixed header-navbar-transparent">
-                <!-- Sidebar -->
-                <%= render "layouts/frontend/sidebar" %>
-                <!-- END Sidebar -->
-              <% if request.path == "/home_header_nav" %>
-                <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
-                    <!-- Header -->
-                    <%= render "layouts/frontend/header" %>
-                  <!-- END Header -->
-              <% end %>
-              <!-- Main Container -->
-              <%= yield %>
-              <!-- END Main Container -->
-              <!-- Footer -->
-              <%= render "layouts/frontend/footer" %>
-              <!-- END Footer -->
-          <% else %>
-            <div id="page-container" class="<%= page_container_class?(params[:layout]) %>">
+            <div id="page-container" class="sidebar-l sidebar-mini">
               <!-- Side Overlay-->
               <%= render "layouts/backend/side_overlay" %>
               <!-- END Side Overlay -->
@@ -66,20 +47,6 @@
               <!-- Footer -->
               <%= render "layouts/backend/footer" %>
               <!-- END Footer -->
-          <% end %>
-        <% else %>
-        <div id="page-container" class="header-navbar-fixed header-navbar-transparent">
-            <!-- Header -->
-            <%= render "layouts/frontend/header" %>
-            <!-- END Header -->
-            <!-- Main Container -->
-            <%= yield %>
-            <!-- END Main Container -->
-            <!-- Footer -->
-            <%= render "layouts/frontend/footer" %>
-            <!-- END Footer -->
-        <% end %>
-        <%= render "layouts/modals/apps" %>
         </div>
         <!-- END Page Container -->
 

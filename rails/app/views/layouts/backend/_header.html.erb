@@ -8,71 +8,66 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu dropdown-menu-right">
-                                <li class="dropdown-header">Profile</li>
+                                <li class="dropdown-header">Mailbox</li>
                                 <li>
-                                    <%= link_to '<i class="si si-envelope-open pull-right"></i>
-                                        <span class="badge badge-primary pull-right">3</span>Inbox'.html_safe, :backend_pages_inbox, 'tabindex': '-1' %>
+                                    <%= link_to :inbox, 'tabindex': '-1' do %>
+                                      <i class="fa fa-inbox pull-right"></i>
+                                      <% if @unread.count > 0 %><span class="badge badge-primary pull-right"><%= @unread.count %></span><% end %>Inbox
+                                    <% end %>
                                 </li>
                                 <li>
-                                    <%= link_to '<i class="si si-user pull-right"></i>
-                                        <span class="badge badge-success pull-right">1</span>Profile'.html_safe, :backend_pages_profile, 'tabindex': '-1' %>
+                                    <%= link_to :starred, 'tabindex': '-1' do %>
+                                      <i class="fa fa-star pull-right"></i>
+                                      <% if @starred.count > 0 %><span class="badge badge-warning pull-right"><%= @starred.count %></span><% end %>Starred
+                                    <% end %>
                                 </li>
                                 <li>
-                                    <%= link_to '<i class="si si-settings pull-right"></i>Settings'.html_safe, :edit_user_registration, 'tabindex': '-1' %>
+                                    <%= link_to :sent, 'tabindex': '-1' do %>
+                                      <i class="fa fa-send pull-right"></i>
+                                      <% if @sent.count > 0 %><span class="badge badge-success pull-right"><%= @sent.count %></span><% end %>Sent
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to :drafts, 'tabindex': '-1' do %>
+                                      <i class="fa fa-pencil pull-right"></i>
+                                      <% if @drafts.count > 0 %><span class="badge badge-danger pull-right"><%= @drafts.count %></span><% end %>Drafts
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to :archived, 'tabindex': '-1' do %>
+                                      <i class="fa fa-folder pull-right"></i>
+                                      <% if @archived.count > 0 %><span class="badge badge-info pull-right"><%= @archived.count %></span><% end %>Archived
+                                    <% end %>
+                                </li>
+                                <li>
+                                    <%= link_to :trash, 'tabindex': '-1' do %>
+                                      <i class="fa fa-trash pull-right"></i>
+                                      <% if @trashed.count > 0 %><span class="badge badge-default pull-right"><%= @trashed.count %></span><% end %>Trash
+                                    <% end %>
                                 </li>
                                 <li class="divider"></li>
-                                <li class="dropdown-header">Actions</li>
                                 <li>
-                                    <%= link_to '<i class="si si-lock pull-right"></i>Lock Account'.html_safe, :backend_pages_lock, 'tabindex': '-1' %>
+                                    <%= link_to '<i class="fa fa-cog pull-right"></i>Settings'.html_safe, :edit_user_registration, 'tabindex': '-1' %>
                                 </li>
                                 <li>
-                                   <%= link_to '<i class="si si-logout pull-right"></i>Log out'.html_safe, :destroy_user_session, 'tabindex': '-1', 'data-method': :delete %>
+                                   <%= link_to '<i class="fa fa-sign-out pull-right"></i>Log out'.html_safe, :destroy_user_session, 'tabindex': '-1', 'data-method': :delete %>
                                 </li>
                             </ul>
                         </div>
-                    </li>
-                    <li>
-                        <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
-                        <button class="btn btn-default" data-toggle="layout" data-action="side_overlay_toggle" type="button">
-                            <i class="fa fa-tasks"></i>
-                        </button>
                     </li>
                 </ul>
                 <!-- END Header Navigation Right -->
 
                 <!-- Header Navigation Left -->
                 <ul class="nav-header pull-left">
-                    <li class="hidden-md hidden-lg">
-                        <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
-                        <button class="btn btn-default" data-toggle="layout" data-action="sidebar_toggle" type="button">
-                            <i class="fa fa-navicon"></i>
-                        </button>
-                    </li>
-                    <li class="hidden-xs hidden-sm">
-                        <!-- Layout API, functionality initialized in App() -> uiLayoutApi() -->
-                        <button class="btn btn-default" data-toggle="layout" data-action="sidebar_mini_toggle" type="button">
-                            <i class="fa fa-ellipsis-v"></i>
-                        </button>
-                    </li>
-                    <li>
-                        <!-- Opens the Apps modal found at the bottom of the page, before including JS code -->
-                        <button class="btn btn-default pull-right" data-toggle="modal" data-target="#apps-modal" type="button">
-                            <i class="si si-grid"></i>
-                        </button>
-                    </li>
-                    <li class="visible-xs">
-                        <!-- Toggle class helper (for .js-header-search below), functionality initialized in App() -> uiToggleClass() -->
-                        <button class="btn btn-default" data-toggle="class-toggle" data-target=".js-header-search" data-class="header-search-xs-visible" type="button">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </li>
+
                     <li class="js-header-search header-search">
-                        <form class="form-horizontal" action="base_pages_search.html" method="post">
-                            <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b">
-                                <input class="form-control" type="text" id="base-material-text" name="base-material-text" placeholder="Search..">
-                                <span class="input-group-addon"><i class="si si-magnifier"></i></span>
-                            </div>
-                        </form>
+                      <%= form_tag "/search", method: :post, class: "form-horizontal" do |f| %>
+                        <div class="form-material form-material-primary input-group remove-margin-t remove-margin-b">
+                          <%= text_field_tag :q, params[:q], class: "form-control", placeholder: "Search.." %>
+                          <span class="input-group-addon"><i class="si si-magnifier"></i></span>
+                        </div>
+                      <% end %>
                     </li>
                 </ul>
                 <!-- END Header Navigation Left -->

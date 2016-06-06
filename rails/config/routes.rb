@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :articles
-  #devise_for :users
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   # backend
   get '/backend', to: 'backend#index', as: 'backend_index'
@@ -112,6 +109,36 @@ Rails.application.routes.draw do
   get '/features', to: 'frontend#features', as: 'frontend_features'
   get '/home_header_nav', to: 'frontend#home_header_nav', as: 'frontend_home_header_nav'
   get '/pricing', to: 'frontend#pricing', as: 'frontend_pricing'
+
+  resources :attachments
+  resources :messages
+
+  #devise_for :users
+  devise_for :users, 
+    :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" },
+    :skip => [ :sessions, :registrations ]
+  as :user do
+    get 'login' => 'devise/sessions#new', :as => :new_user_session
+    post 'login' => 'devise/sessions#create', :as => :user_session
+    delete 'logout' => 'devise/sessions#destroy', :as => :destroy_user_session
+    get 'signup' => 'devise/registrations#new', as: :new_user_registration
+    post 'signup' => 'devise/registrations#create', as: :user_registration
+    get '/settings', to: "devise/registrations#edit", as: :edit_user_registration
+  end
   
-  root 'frontend#index'
+  # messages
+  get '/starred', to: 'messages#index', as: :starred
+  get '/trash', to: 'messages#index', as: :trash
+  get '/drafts', to: 'messages#index', as: :drafts
+  get '/sent', to: 'messages#index', as: :sent
+  get '/archive', to: 'messages#index', as: :archived
+  get '/inbox', to: 'messages#index', as: :inbox
+
+  get '/lock', to: 'pages#lock', as: :lock
+  get '/profile', to: 'pages#profile', as: :profile
+
+  get '/search', to: 'search#search'
+  post '/search', to: 'search#search'
+
+  root to: 'application#redirect_to_inbox'
 end

@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def is_starred?(message)
+    if message.starred == true
+      return 1
+    else
+      return 0
+    end
+  end
+
   def resource_name
      :user
   end

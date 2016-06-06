@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522114052) do
+ActiveRecord::Schema.define(version: 20160605121814) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
@@ -19,6 +19,29 @@ ActiveRecord::Schema.define(version: 20160522114052) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "message_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string   "email"
+    t.string   "display_name"
+    t.text     "body"
+    t.integer  "attachments"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "subject"
+    t.boolean  "starred"
+    t.boolean  "sent"
+    t.boolean  "draft"
+    t.boolean  "archived"
+    t.boolean  "trashed"
+    t.boolean  "unread"
+    t.integer  "user_id"
   end
 
   create_table "sessions", force: :cascade do |t|

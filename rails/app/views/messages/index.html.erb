@@ -1,0 +1,155 @@
+<% content_for :notice do %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<% content_for :js_code do %>
+        <!-- Page JS Plugins -->
+        <script src="/assets/js/plugins/jquery-raty/jquery.raty.min.js"></script>
+        <script src="/assets/js/plugins/easy-pie-chart/jquery.easypiechart.min.js"></script>
+        <!-- Page JS Code -->
+        <script src="/assets/js/pages/base_comp_rating.js"></script>
+        <script>
+            $(function () {
+                // Init page helpers (Table Tools helper + Easy Pie Chart plugin)
+                App.initHelpers(['table-tools', 'easy-pie-chart']);
+                //App.layout('sidebar_close');
+            });
+        </script>
+<% end %>
+                <!-- Page Content -->
+                <div class="content">
+                    <div class="row">
+                        <div class="col-sm-5 col-lg-3">
+                            <!-- Collapsible Inbox Navigation (using Bootstrap collapse functionality) -->
+                            <button class="btn btn-block btn-primary visible-xs push" data-toggle="collapse" data-target="#inbox-nav" type="button">Navigation</button>
+                            <div class="collapse navbar-collapse remove-padding" id="inbox-nav">
+                                <!-- Inbox Menu -->
+                                <div class="block">
+                                    <div class="block-header bg-gray-lighter">
+                                        <ul class="block-options">
+                                            <li>
+                                                <button data-toggle="modal" data-target="#modal-compose" type="button"><i class="fa fa-pencil"></i> New Message</button>
+                                            </li>
+                                        </ul>
+                                        <h3 class="block-title">Mailbox</h3>
+                                    </div>
+                                    <div class="block-content">
+                                        <ul class="nav nav-pills nav-stacked push">
+                                            <li class="<%= active_link?("/inbox") %>">
+                                                <a href="/inbox">
+                                                    <span class="badge pull-right"><%= @unread.count %></span><i class="fa fa-fw fa-inbox push-5-r"></i> Inbox
+                                                </a>
+                                            </li>
+                                            <li class="<%= active_link?("/starred") %>">
+                                                <a href="/starred">
+                                                    <span class="badge pull-right"><%= @starred.count %></span><i class="fa fa-fw fa-star push-5-r"></i> Starred
+                                                </a>
+                                            </li>
+                                            <li class="<%= active_link?("/sent") %>">
+                                                <a href="/sent">
+                                                    <span class="badge pull-right"><%= @sent.count %></span><i class="fa fa-fw fa-send push-5-r"></i> Sent
+                                                </a>
+                                            </li>
+                                            <li class="<%= active_link?("/drafts") %>">
+                                                <a href="/drafts">
+                                                    <span class="badge pull-right"><%= @drafts.count %></span><i class="fa fa-fw fa-pencil push-5-r"></i> Draft
+                                                </a>
+                                            </li>
+                                            <li class="<%= active_link?("/archive") %>">
+                                                <a href="/archive">
+                                                    <span class="badge pull-right"><%= @archived.count %></span><i class="fa fa-fw fa-folder push-5-r"></i> Archive
+                                                </a>
+                                            </li>
+                                            <li class="<%= active_link?("/trash") %>">
+                                                <a href="/trash">
+                                                    <span class="badge pull-right"><%= @trashed.count %></span><i class="fa fa-fw fa-trash push-5-r"></i> Trash
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- END Inbox Menu -->
+                            </div>
+                            <!-- END Collapsible Inbox Navigation -->
+                        </div>
+                        <div class="col-sm-7 col-lg-9">
+                            <!-- Message List -->
+                            <div class="block">
+                                <div class="block-header bg-gray-lighter">
+                                    <ul class="block-options">
+                                        <li>
+                                            <button class="js-tooltip" title="Previous 15 Messages" type="button" data-toggle="block-option"><i class="si si-arrow-left"></i></button>
+                                        </li>
+                                        <li>
+                                            <button class="js-tooltip" title="Next 15 Messages" type="button" data-toggle="block-option"><i class="si si-arrow-right"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="refresh_toggle" data-action-mode="demo"><i class="si si-refresh"></i></button>
+                                        </li>
+                                        <li>
+                                            <button type="button" data-toggle="block-option" data-action="fullscreen_toggle"></button>
+                                        </li>
+                                    </ul>
+                                    <div class="block-title text-normal">
+                                        <%if @messages.empty? %>
+                                        <strong>
+                                          0-0</strong> <span class="font-w400">from</span> <strong><%= @messages.count %></strong>
+                                        <% else %>
+                                        <strong>
+                                          <%= @messages.first.id %>-<%= @messages.last.id %></strong> <span class="font-w400">from</span> <strong><%= @messages.count %></strong>
+                                        <% end %>
+                                    </div>
+                                </div>
+                                <div class="block-content">
+                                    <!-- Messages Options -->
+                                    <div class="push">
+                                        <button class="btn btn-default pull-right" type="button"><i class="fa fa-times text-danger push-5-l push-5-r"></i> <span class="hidden-xs">Delete</span></button>
+                                        <div class="btn-group">
+                                            <button class="btn btn-default" type="button"><i class="fa fa-archive text-primary push-5-l push-5-r"></i> <span class="hidden-xs">Archive</span></button>
+                                            <button class="btn btn-default" type="button"><i class="fa fa-star text-warning push-5-l push-5-r"></i> <span class="hidden-xs">Star</span></button>
+                                        </div>
+                                    </div>
+                                    <!-- END Messages Options -->
+
+                                    <!-- Messages & Checkable Table (.js-table-checkable class is initialized in App() -> uiHelperTableToolsCheckable()) -->
+                                    <div class="pull-r-l">
+                                        <table class="js-table-checkable table table-hover table-vcenter">
+                                            <tbody>
+                                              <% @messages.each do |message| %>
+                                                <tr>
+                                                    <td class="text-center" style="width: 70px;">
+                                                        <label class="css-input css-checkbox css-checkbox-primary">
+                                                            <input type="checkbox"><span></span>
+                                                        </label>
+                                                    </td>
+                                                    <td class="text-center" style="width: 70px;">
+                                                      <div class="js-rating" data-number="1" data-score="<%= is_starred?(message) %>"></div>
+                                                    </td>
+                                                    <td class="hidden-xs font-w600" style="width: 140px;"><%= message.display_name %></td>
+                                                    <td>
+                                                        <a class="font-w600" data-toggle="modal" data-target="#modal-message" href="#"><%= message.subject %></a>
+                                                        <div class="text-muted push-5-t"><%= message.body %></div>
+                                                    </td>
+                                                    <% if message.attachments.count > 0 %>
+                                                    <td class="visible-lg text-muted" style="width: 80px;">
+                                                        <i class="fa fa-paperclip"></i> (<%= message.attachments.count %>)
+                                                    </td>
+                                                    <% end %>
+                                                    <td class="visible-lg text-muted" style="width: 120px;">
+                                                        <em><%= time_ago_in_words(message.created_at) %> ago</em>
+                                                    </td>
+                                                </tr>
+                                              <% end %>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <!-- END Messages -->
+                                </div>
+                            </div>
+                            <!-- END Message List -->
+                        </div>
+                    </div>
+                </div>
+                <!-- END Page Content -->
+        <%= render "layouts/modals/compose" %>
+        <%= render "layouts/modals/message" %>
+
