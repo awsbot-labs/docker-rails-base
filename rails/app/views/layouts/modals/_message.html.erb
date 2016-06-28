@@ -1,5 +1,5 @@
         <!-- Message Modal -->
-        <div class="modal fade" id="modal-message" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal fade" id="modal-message<%= message.id %>" tabindex="-1" role="dialog" aria-hidden="true">
             <div class="modal-dialog modal-dialog-popout">
                 <div class="modal-content">
                     <div class="block block-themed block-transparent remove-margin-b">
@@ -12,21 +12,17 @@
                                     <button data-dismiss="modal" type="button"><i class="si si-close"></i></button>
                                 </li>
                             </ul>
-                            <h3 class="block-title">Welcome to our service</h3>
+                            <h3 class="block-title"><%= message.subject %></h3>
                         </div>
                         <div class="block-content block-content-full bg-image text-center" style="background-image: url('assets/img/photos/photo7.jpg');">
                             <img class="img-avatar img-avatar96 img-avatar-thumb" src="/assets/img/avatars/avatar4.jpg" alt="">
                         </div>
                         <div class="block-content block-content-full block-content-mini bg-gray-lighter">
-                            <span class="font-s13 text-muted pull-right"><em>2 min ago</em></span>
-                            <a class="font-s13" href="javascript:void(0)">service@example.com</a>
+                            <span class="font-s13 text-muted pull-right"><em><%= message.created_at %></em></span>
+                            <a class="font-s13" href="javascript:void(0)"><%= message.email %></a>
                         </div>
                         <div class="block-content">
-                            <p>Dear John,</p>
-                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                            <p>Dolor posuere proin blandit accumsan senectus netus nullam curae, ornare laoreet adipiscing luctus mauris adipiscing pretium eget fermentum, tristique lobortis est ut metus lobortis tortor tincidunt himenaeos habitant quis dictumst proin odio sagittis purus mi, nec taciti vestibulum quis in sit varius lorem sit metus mi.</p>
-                            <p>Best Regards,</p>
-                            <p>Amber Walker</p>
+                            <%= message.body %>
                         </div>
                         <div class="block-content bg-gray-lighter">
                             <div class="row items-push">

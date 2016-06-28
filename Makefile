@@ -1,4 +1,4 @@
-APP_NAME = rails
+APP_NAME = mailbox
 MAINTAINER = dcrbsltd
 NAME = $(MAINTAINER)/$(APP_NAME)
 PORT = 3000

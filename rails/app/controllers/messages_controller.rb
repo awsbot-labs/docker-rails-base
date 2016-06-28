@@ -4,6 +4,7 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
+    @message = Message.new
     if request.path == '/starred'
       @messages = @starred
     elsif request.path == '/sent'
@@ -38,8 +39,8 @@ class MessagesController < ApplicationController
 
     respond_to do |format|
       if @message.save
-        format.html { redirect_to @message, notice: 'Message was successfully created.' }
-        format.json { render :show, status: :created, location: @message }
+        format.html { redirect_to :inbox, notice: 'Message was successfully created.' }
+        format.json { render :inbox, status: :created, location: @message }
       else
         format.html { render :new }
         format.json { render json: @message.errors, status: :unprocessable_entity }
@@ -52,8 +53,8 @@ class MessagesController < ApplicationController
   def update
     respond_to do |format|
       if @message.update(message_params)
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { render :show, status: :ok, location: @message }
+        format.html { redirect_to :inbox, notice: 'Message was successfully updated.' }
+        format.json { render :inbox, status: :ok, location: @message }
       else
         format.html { render :edit }
         format.json { render json: @message.errors, status: :unprocessable_entity }

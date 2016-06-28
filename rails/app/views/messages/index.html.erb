@@ -102,10 +102,17 @@
                                 <div class="block-content">
                                     <!-- Messages Options -->
                                     <div class="push">
-                                        <button class="btn btn-default pull-right" type="button"><i class="fa fa-times text-danger push-5-l push-5-r"></i> <span class="hidden-xs">Delete</span></button>
+                                        <%= button_tag class: "btn btn-default pull-right", onclick: "alert();" do %>
+                                        <i class="fa fa-times text-danger push-5-l push-5-r"></i> <span class="hidden-xs">Delete</span>
+                                        <% end %>
                                         <div class="btn-group">
-                                            <button class="btn btn-default" type="button"><i class="fa fa-archive text-primary push-5-l push-5-r"></i> <span class="hidden-xs">Archive</span></button>
-                                            <button class="btn btn-default" type="button"><i class="fa fa-star text-warning push-5-l push-5-r"></i> <span class="hidden-xs">Star</span></button>
+                                            <%= button_tag class: "btn btn-default pull-right" do %>
+                                            <i class="fa fa-star text-warning push-5-l push-5-r"></i> <span class="hidden-xs">Star</span>
+                                            <% end %>
+                                            <%= button_tag class: "btn btn-default pull-right" do %>
+                                            <i class="fa fa-archive text-primary push-5-l push-5-r"></i> <span class="hidden-xs">Archive</span>
+                                            <% end %>
+
                                         </div>
                                     </div>
                                     <!-- END Messages Options -->
@@ -115,7 +122,7 @@
                                         <table class="js-table-checkable table table-hover table-vcenter">
                                             <tbody>
                                               <% @messages.each do |message| %>
-                                                <tr>
+                                                <tr id="<%= message.id %>">
                                                     <td class="text-center" style="width: 70px;">
                                                         <label class="css-input css-checkbox css-checkbox-primary">
                                                             <input type="checkbox"><span></span>
@@ -126,7 +133,7 @@
                                                     </td>
                                                     <td class="hidden-xs font-w600" style="width: 140px;"><%= message.display_name %></td>
                                                     <td>
-                                                        <a class="font-w600" data-toggle="modal" data-target="#modal-message" href="#"><%= message.subject %></a>
+                                                        <a class="font-w600" data-toggle="modal" data-target="#modal-message<%= message.id %>" href="#"><%= message.subject %></a>
                                                         <div class="text-muted push-5-t"><%= message.body %></div>
                                                     </td>
                                                     <% if message.attachments.count > 0 %>
@@ -151,5 +158,7 @@
                 </div>
                 <!-- END Page Content -->
         <%= render "layouts/modals/compose" %>
-        <%= render "layouts/modals/message" %>
+        <% @messages.each do |message| %>
+          <%= render "layouts/modals/message", :message => message %>
+        <% end %>
 

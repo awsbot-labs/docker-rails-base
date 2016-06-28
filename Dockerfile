@@ -8,6 +8,7 @@ COPY $APP_NAME $APP_HOME
 WORKDIR $APP_HOME
 
 # Install gem dependencies
+
 RUN apt-get update -qq && \
     apt-get install -y \
       build-essential \
@@ -24,6 +25,13 @@ RUN apt-get update -qq && \
       sqlite3 \
       libmysqlclient-dev \
       software-properties-common
+
+# Oracle Java8 and Elasticsearch
+RUN add-apt-repository -y ppa:webupd8team/java
+RUN echo "debconf shared/accepted-oracle-license-v1-1 select true" | debconf-set-selections
+RUN apt-get update && apt-get install -y -q oracle-java8-installer
+RUN wget https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.2.deb && dpkg -i elasticsearch-1.7.2.deb
+RUN update-rc.d elasticsearch defaults
 
 # Enable built in Postgres to start on boot and start for rake migration
 RUN apt-get install -y postgresql \
