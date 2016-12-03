@@ -37,7 +37,7 @@ docker_release: test tag_latest
 push:
 	docker push $(NAME)
 
-release:
+git:
 	@echo "Enter commit message:"
 	@read REPLY; \
 	echo "${DATE} - $$REPLY" >> CHANGELOG; \
